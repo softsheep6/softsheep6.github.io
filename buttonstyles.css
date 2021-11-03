@@ -1,0 +1,76 @@
+    body {
+      background-color: lightskyblue;
+      font-family:  Arial, Helvetica, sans-serif;
+    }
+    
+    .button {
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      transition-duration: 0.4s;
+    }
+      .button:hover {
+      color: white;
+      padding: 17px 35px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      transition-duration: 0.4s;
+    }
+    .small-button {
+      color: white;
+      padding: 7.5px 16px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      transition-duration: 0.4s;
+    }
+
+    .small-button:hover {
+      color: white;
+      padding: 9px 18px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      transition-duration: 0.4s;
+    }
+    
+    .number {text-align: center; font-size: 300%;}
+    .text-left {text-align:left;}
+    .text-right {text-align:right;}
+    .text-center {text-align: center;}
+    .add {background-color: #4CAF50;padding: 32px 32px;}
+    .add:hover {background-color: darkgreen;padding: 36px 36px;}
+    .reset {background-color: red;}
+    .reset:hover {background-color: darkred;}
+    .upgrade {background-color: #9900cc;}
+    .upgrade:hover {background-color: #660066;}
+    .auto {background-color: #b3b3b3;}
+    .auto:hover {background-color: #8c8c8c;}
+    .factory {background-color: #ed7e07;}
+    .factory:hover {background-color: #b5630b;}
+    .dark {background-color: #666666;}
+    .dark:hover {background-color: #404040;}
+    .save {background-color: #0066ff;}
+    .save:hover {background-color: #0000ff;}
+    .hr1 {width: 25%;}
+    
+    /* unused */
+    .sub {background-color: #008CBA;}
+    .mult {background-color: #008CBA;} /* Blue */
+    .div {background-color: orange;}
+    .win {background-color: #ff9900;}
