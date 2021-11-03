@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>shepps button game</title>
+    <link rel="stylesheet" href="buttonstyles.css"/>
+    <link rel="shortcut icon" type="image/png" href="https://softsheep7.w3spaces.com/images/favicon.png"/>
+</head>
+<body onload="numberPerSecondGiver()">
+
+<!-- epic script stuff -->
+
+<script src="buttonscript.js"></script>
+
+<!-- number -->
+
+
+<p id="1" class="number">0</p>
+
+
+<hr style="width:25%;align:center;" id="hr1">
+
+<div style="text-align:center;" id="npsDisplayWords">Number Per Second:</div><div id="numberPerSecondDisplay" style="text-align:center;">0</div>
+
+<br>
+
+<!-- buttons -->
+
+<div class="text-center">
+    <button type="button" onclick="addValue()" class="button add" id="addButton">Click to add 1!</button>
+</div>
+<div class="text-center">
+    
+    <button type="button" onclick="upgrade()" class="button upgrade" id="upgradeButton">Upgrade click! (Cost: 100)</button>
+    <br>
+    <button type="button" onclick="autoButton()" class="button auto" id="autoButtonButton">Buy auto button! (Cost: 30)</button>
+    <br>
+    <button type="button" onclick="buttonFactory()" class="button factory" id="factoryButton">Buy button factory! (Cost: 250)</button>
+    <br>
+
+    <!-- upgrade -->
+    
+    <!--<div style="text-align:center;">cost to upgrade:</div><div id="upgradeCostDisplay" style="text-align:center;">100</div>
+    <div style="text-align:center;">cost to buy auto button:</div><div id="autoButtonCostDisplay" style="text-align:center;">30</div>
+    -->
+
+</div>
+<hr id="hr2">
+
+<!-- options -->
+<div class="text-center">
+    <p id="options"> Options </p>
+</div>
+
+<div class="text-center">
+    <button type="button" onclick="resetValue()" class="small-button reset">Reset</button>
+    <button type="button" onclick="console.log("a")" class="small-button dark" >Dark Mode (coming soon)</button>
+    <button type="button" onclick="console.log("a")" class="small-button save">Save (coming soon)</button>
+</div>
+
+
+
+
+
+<!-- unused -->
+
+<!--<button type="button" onclick="subValue()" class="button sub">click to subtract 1!</button> -->
+<!--<button type="button" onclick="multValue()" class="button mult">click to multiply by 2!</button>
+<button type="button" onclick="divValue()" class="button div">click to divide by 2!</button> -->
+
+</body>
+</html>
