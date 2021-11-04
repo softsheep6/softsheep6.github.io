@@ -116,6 +116,7 @@
     }
     function test() {
         number = cookievalue;
+        return;
     }
     
     function onLoad() {
