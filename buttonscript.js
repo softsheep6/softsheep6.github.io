@@ -29,17 +29,7 @@
         number--;
         updateNumber();
     }
-    /*
-    function multValue() {
-        number = (number*2);
-        updateNumber();
-    }
     
-    function divValue() {
-        number = (number/2);
-        updateNumber();
-    } 
-    */
     function resetValue() {
         number = 0;
         upgradeCost = 100;
@@ -118,4 +108,12 @@
         document.getElementById('hr1').setAttribute('style', 'color:white', 'width:25%', 'align:center')
         document.getElementById('hr2').setAttribute('style', 'color:white')
         
+    }
+    function save() {
+        cookievalue = escape(number);
+        document.cookie=cookievalue
+        
+    }
+    function test() {
+        number = cookievalue;
     }
