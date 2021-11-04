@@ -120,7 +120,6 @@
         })
         return res;
     }
-
     function setCookie(cName, cValue, expDays) {
         let date = new Date();
         date.setTime(date.getTime() + (expDays * 24 * 60 * 60 * 1000));
@@ -132,7 +131,7 @@
         setCookie('cookievalue', number, 730);
     }
     function load() {
-        number = cookievalue;
+        number = getCookie("cookievalue");
         return;
     }
     
