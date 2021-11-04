@@ -117,3 +117,9 @@
     function test() {
         number = cookievalue;
     }
+    
+    function onLoad() {
+        numberPerSecondGiver();
+        save();
+        test();
+    }
