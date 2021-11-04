@@ -120,6 +120,5 @@
     
     function onLoad() {
         numberPerSecondGiver();
-        save();
         test();
     }
