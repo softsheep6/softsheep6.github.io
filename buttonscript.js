@@ -109,21 +109,6 @@
         document.getElementById('hr2').setAttribute('style', 'color:white')
         
     }
-    function save() {
-        cookievalue = escape(number);
-        document.cookie=cookievalue
-        
-    }
-    function test() {
-        // number = cookievalue;
-        number = getCookie(cookievalue);
-        return;
-    }
-    
-    function onLoad() {
-        numberPerSecondGiver();
-        test();
-    }
 
     function getCookie(cName) {
         const name = cName + "=";
@@ -134,4 +119,23 @@
             if (val.indexOf(name) === 0) res = val.substring(name.length);
         })
         return res;
+    }
+
+    function setCookie(cName, cValue, expDays) {
+        let date = new Date();
+        date.setTime(date.getTime() + (expDays * 24 * 60 * 60 * 1000));
+        const expires = "expires=" + date.toUTCString();
+        document.cookie = cName + "=" + cValue + "; " + expires + "; path=/";
+    }
+
+    function save() {
+        setCookie('cookievalue', number, 730);
+    }
+    function load() {
+        number = cookievalue;
+        return;
+    }
+    
+    function onLoad() {
+        numberPerSecondGiver();
     }
