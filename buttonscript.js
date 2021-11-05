@@ -132,6 +132,7 @@
     }
     function load() {
         number = getCookie("cookievalue");
+        number = parseInt(number);
         updateNumber();
         return;
     }
