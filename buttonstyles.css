@@ -50,6 +50,8 @@
     }
     
     .number {text-align: center; font-size: 300%;}
+    .savemessage {text-align: center; font-size: 75%;}
+
     .text-left {text-align:left;}
     .text-right {text-align:right;}
     .text-center {text-align: center;}
