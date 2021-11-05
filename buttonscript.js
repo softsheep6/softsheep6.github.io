@@ -109,7 +109,7 @@
         document.getElementById('hr2').setAttribute('style', 'color:white')
         
     }
-
+    // 2 confusing functions that i have no idea how they work but i am glad they do
     function getCookie(cName) {
         const name = cName + "=";
         const cDecoded = decodeURIComponent(document.cookie); //to be careful
@@ -128,14 +128,30 @@
     }
 
     function save() {
+        // make the cookies
         setCookie('numbercookie', number, 730);
         setCookie('npscookie', numberPerSecond, 730);
+        setCookie('addvaluecookie', numberAddValue, 730);
+        setCookie('clickupgradecookie', upgradeCost, 730);
+        setCookie('autobuttoncookie', autoButtonCost, 730);
+        setCookie('buttonfactorycookie', buttonFactoryCost, 730);
     }
     function load() {
+        // make the variables equal to the cookie values
         number = getCookie("numbercookie");
         numberPerSecond = getCookie("npscookie");
+        numberAddValue = getCookie("addvaluecookie");
+        upgradeCost = getCookie("clickupgradecookie");
+        autoButtonCost = getCookie("autobuttoncookie");
+        buttonFactoryCost = getCookie("buttonfactorycookie");
+        // make them be numbers and not bad strings
         number = parseInt(number);
         numberPerSecond = parseInt(numberPerSecond);
+        numberAddValue = parseInt(numberAddValue);
+        upgradeCost = parseInt(upgradeCost);
+        autoButtonCost = parseInt(autoButtonCost);
+        buttonFactoryCost = parseInt(buttonFactoryCost);
+        
         updateNumber();
         return;
     }
