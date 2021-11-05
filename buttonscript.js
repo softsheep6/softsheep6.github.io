@@ -128,11 +128,14 @@
     }
 
     function save() {
-        setCookie('cookievalue', number, 730);
+        setCookie('numbercookie', number, 730);
+        setCookie('npscookie', numberPerSecond, 730);
     }
     function load() {
-        number = getCookie("cookievalue");
+        number = getCookie("numbercookie");
+        numberPerSecond = getCookie("npscookie");
         number = parseInt(number);
+        numberPerSecond = parseInt(numberPerSecond);
         updateNumber();
         return;
     }
