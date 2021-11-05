@@ -127,7 +127,7 @@
         document.cookie = cName + "=" + cValue + "; " + expires + "; path=/";
     }
 
-    function save() {
+    async function save() {
         // make the cookies
         setCookie('numbercookie', number, 730);
         setCookie('npscookie', numberPerSecond, 730);
@@ -135,8 +135,12 @@
         setCookie('clickupgradecookie', upgradeCost, 730);
         setCookie('autobuttoncookie', autoButtonCost, 730);
         setCookie('buttonfactorycookie', buttonFactoryCost, 730);
+        // save message
+        document.getElementById('savemessage').innerHTML = "Saved";
+        await sleep(1000);
+        document.getElementById('savemessage').innerHTML = "";
     }
-    function load() {
+    async function load() {
         // make the variables equal to the cookie values
         number = getCookie("numbercookie");
         numberPerSecond = getCookie("npscookie");
@@ -151,6 +155,10 @@
         upgradeCost = parseInt(upgradeCost);
         autoButtonCost = parseInt(autoButtonCost);
         buttonFactoryCost = parseInt(buttonFactoryCost);
+        // load message
+        document.getElementById('savemessage').innerHTML = "Loaded";
+        await sleep(1000);
+        document.getElementById('savemessage').innerHTML = "";
         
         updateNumber();
         return;
