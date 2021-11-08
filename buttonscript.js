@@ -10,14 +10,27 @@
     var autoButtonAmount = 0;
     var buttonFactoryCost = 250;
     var buttonFactoryAmount = 0;
+
+    var clickbuffcooldown = false;
     
-    function updateNumber() {
+    async function updateNumber() {
       document.getElementById('addButton').innerHTML = "Click to add " + numberAddValue + "!";
       document.getElementById('1').innerHTML = number;
       document.getElementById('numberPerSecondDisplay').innerHTML = numberPerSecond;
       document.getElementById('upgradeButton').innerHTML = "Upgrade click! (Cost: " + upgradeCost + ")";
       document.getElementById('autoButtonButton').innerHTML = "Buy auto button! (Cost: " + autoButtonCost + ")";
       document.getElementById('factoryButton').innerHTML = "Buy button factory! (Cost: " + buttonFactoryCost + ")";
+      if (number >= 100000) {
+          document.getElementById("buffs").style.display = "block";
+      } else {
+          return;
+      }
+      if (clickbuffcooldown = true) {
+          await sleep(600000);
+          clickbuffcooldown = false;
+      } else {
+          return;
+      }
     }
     
     function addValue() {
@@ -54,7 +67,7 @@
         }
         
     }
-    
+    // unused
     function win() {
     number += 4893659812783579752386729634964986782;
         numberAddValue += 987653237856829634958927;
@@ -86,7 +99,7 @@
             return;
         }
     }
-
+    // time
     function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
         }
@@ -98,7 +111,7 @@
             await sleep(1000);
         }
     }
-    
+    // coming soon
     function darkMode() {
     	document.body.style.background = "#262626";
         document.getElementById('1').setAttribute('style', 'color:white')
@@ -166,4 +179,14 @@
     
     function onLoad() {
         numberPerSecondGiver();
+    }
+
+    async function clickBuff() {
+        if (clickbuffcooldown = false) {
+            clickbuffcooldown = true;
+            var unbuffedAddValue = numberAddValue;
+            numberAddValue * 100;
+            await sleep(30000);
+            numberAddValue = unbuffedAddValue;
+        }
     }
