@@ -12,6 +12,7 @@
     var buttonFactoryAmount = 0;
 
     var clickbuffcooldown = false;
+    var unlockedBuffsDisplayed = false;
     
     async function updateNumber() {
       document.getElementById('addButton').innerHTML = "Click to add " + numberAddValue + "!";
@@ -20,7 +21,8 @@
       document.getElementById('upgradeButton').innerHTML = "Upgrade click! (Cost: " + upgradeCost + ")";
       document.getElementById('autoButtonButton').innerHTML = "Buy auto button! (Cost: " + autoButtonCost + ")";
       document.getElementById('factoryButton').innerHTML = "Buy button factory! (Cost: " + buttonFactoryCost + ")";
-      if (number >= 100000) {
+      if (number >= 100000 && unlockedBuffsDisplayed = false) {
+          unlockedBuffsDisplayed = true;
           document.getElementById("buffs").style.display = "block";
           document.getElementById('savemessage').innerHTML = "Unlocked Buffs!";
           await sleep(3000);
