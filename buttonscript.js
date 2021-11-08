@@ -21,21 +21,12 @@
       document.getElementById('upgradeButton').innerHTML = "Upgrade click! (Cost: " + upgradeCost + ")";
       document.getElementById('autoButtonButton').innerHTML = "Buy auto button! (Cost: " + autoButtonCost + ")";
       document.getElementById('factoryButton').innerHTML = "Buy button factory! (Cost: " + buttonFactoryCost + ")";
-      if (number >= 100000 && unlockedBuffsDisplayed = false) {
-          unlockedBuffsDisplayed = true;
-          document.getElementById("buffs").style.display = "block";
-          document.getElementById('savemessage').innerHTML = "Unlocked Buffs!";
-          await sleep(3000);
-          document.getElementById('savemessage').innerHTML = "";
-      } else {
-          return;
-      }
       if (clickbuffcooldown = true) {
-          await sleep(600000);
-          clickbuffcooldown = false;
-      } else {
-          return;
-      }
+            await sleep(600000);
+            clickbuffcooldown = false;
+        } else {
+            return;
+        }
     }
     
     function addValue() {
@@ -184,6 +175,7 @@
     
     function onLoad() {
         numberPerSecondGiver();
+        unlockBuffs();
     }
 
     async function clickBuff() {
@@ -194,4 +186,17 @@
             await sleep(30000);
             numberAddValue = unbuffedAddValue;
         }
+    }
+    
+    function unlockBuffs() {
+        if (number >= 100000 && unlockedBuffsDisplayed = false) {
+            unlockedBuffsDisplayed = true;
+            document.getElementById("buffs").style.display = "block";
+            document.getElementById('savemessage').innerHTML = "Unlocked Buffs!";
+            await sleep(3000);
+            document.getElementById('savemessage').innerHTML = "";
+        } else {
+            return;
+        }
+        
     }
