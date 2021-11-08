@@ -71,8 +71,8 @@
     .dark:hover {background-color: #404040;}
     .save {background-color: #0066ff;}
     .save:hover {background-color: #0000ff;}
-    .cbuff {background-color: #f151ff; width: 10px; height: 10px;}
-    .cbuff:hover {background-color: #f111ff; width: 10px; height: 10px;}
+    .cbuff {background-color: #f151ff; width: 7.5px; height: 16px;}
+    .cbuff:hover {background-color: #f111ff; width: 9px; height: 18px;}
     .hr1 {width: 25%;}
     
     /* unused */
