@@ -22,6 +22,9 @@
       document.getElementById('factoryButton').innerHTML = "Buy button factory! (Cost: " + buttonFactoryCost + ")";
       if (number >= 100000) {
           document.getElementById("buffs").style.display = "block";
+          document.getElementById('savemessage').innerHTML = "Unlocked Buffs!";
+          await sleep(3000);
+          document.getElementById('savemessage').innerHTML = "";
       } else {
           return;
       }
