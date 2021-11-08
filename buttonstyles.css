@@ -51,6 +51,8 @@
     
     .number {text-align: center; font-size: 300%; margin-top: 0; margin-bottom: 0;}
     .savemessage {text-align: center; font-size: 75%; margin-top: 0; margin-bottom: 0;}
+    .buffs {text-align: center; margin-top: 0; margin-bottom: 0; background-color: #41a3e0;}
+    .bufftext {text-align: center; font-size: 125%; margin-top: 0; margin-bottom: 0;}
 
     .text-left {text-align:left;}
     .text-right {text-align:right;}
@@ -69,6 +71,8 @@
     .dark:hover {background-color: #404040;}
     .save {background-color: #0066ff;}
     .save:hover {background-color: #0000ff;}
+    .cbuff {background-color: #f151ff; width: 10px; height: 10px;}
+    .cbuff:hover {background-color: #f111ff; width: 10px; height: 10px;}
     .hr1 {width: 25%;}
     
     /* unused */
