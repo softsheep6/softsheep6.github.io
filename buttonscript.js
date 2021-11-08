@@ -21,12 +21,12 @@
       document.getElementById('upgradeButton').innerHTML = "Upgrade click! (Cost: " + upgradeCost + ")";
       document.getElementById('autoButtonButton').innerHTML = "Buy auto button! (Cost: " + autoButtonCost + ")";
       document.getElementById('factoryButton').innerHTML = "Buy button factory! (Cost: " + buttonFactoryCost + ")";
-      if (clickbuffcooldown = true) {
-            await sleep(600000);
-            clickbuffcooldown = false;
-        } else {
-            return;
-        }
+      //if (clickbuffcooldown = true) {
+            //await sleep(600000);
+            //clickbuffcooldown = false;
+        //} else {
+            //return;
+        //}
     }
     
     function addValue() {
@@ -175,7 +175,7 @@
     
     function onLoad() {
         numberPerSecondGiver();
-        unlockBuffs();
+        //unlockBuffs();
     }
 
     async function clickBuff() {
