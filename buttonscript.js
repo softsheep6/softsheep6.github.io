@@ -104,8 +104,8 @@
 
     async function numberPerSecondGiver() {
         while (true) {
-            number += (autoButtonAmount * autoButtonMultiplier);
-            number += (buttonFactoryAmount * buttonFactoryMultiplier);
+            number += ((autoButtonAmount * 1) * autoButtonMultiplier);
+            number += ((buttonFactoryAmount * 5) * buttonFactoryMultiplier);
             updateNumber();
             await sleep(1000);
         }
