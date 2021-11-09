@@ -12,7 +12,7 @@
     var buttonFactoryAmount = 0;
 
     var clickbuffcooldown = false;
-    var unlockedBuffsDisplayed = false;
+    //var unlockedBuffsDisplayed = false;
     
     async function updateNumber() {
       document.getElementById('addButton').innerHTML = "Click to add " + numberAddValue + "!";
@@ -199,4 +199,4 @@
             return;
         }
         
-    }
+    }*/
