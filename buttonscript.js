@@ -8,11 +8,13 @@
     
     var autoButtonCost = 30;
     var autoButtonAmount = 0;
+    var autoButtonMultiplier = 1;
     var buttonFactoryCost = 250;
     var buttonFactoryAmount = 0;
+    var buttonFactoryMultiplier = 1;
 
     var clickbuffcooldown = false;
-    //var unlockedBuffsDisplayed = false;
+    var unlockedBuffsDisplayed = false;
     
     function updateNumber() {
       document.getElementById('addButton').innerHTML = "Click to add " + numberAddValue + "!";
@@ -102,7 +104,8 @@
 
     async function numberPerSecondGiver() {
         while (true) {
-            number += numberPerSecond
+            number += (autoButtonAmount * autoButtonMultiplier)
+            number += (buttonFactoryAmount * buttonFactoryMultiplier)
             updateNumber()
             await sleep(1000);
         }
@@ -144,6 +147,10 @@
         setCookie('clickupgradecookie', upgradeCost, 730);
         setCookie('autobuttoncookie', autoButtonCost, 730);
         setCookie('buttonfactorycookie', buttonFactoryCost, 730);
+        setCookie('ABamountcookie', autoButtonAmount, 730);
+        setCookie('ABmultipliercookie', autoButtonMultiplier, 730);
+        setCookie('BFamountcookie', buttonFactoryAmount, 730);
+        setCookie('BFmultipliercookie', buttonFactoryMultiplier, 730);
         // save message
         document.getElementById('savemessage').innerHTML = "Saved";
         await sleep(1000);
@@ -157,6 +164,10 @@
         upgradeCost = getCookie("clickupgradecookie");
         autoButtonCost = getCookie("autobuttoncookie");
         buttonFactoryCost = getCookie("buttonfactorycookie");
+        autoButtonAmount = getCookie("ABamountcookie");
+        autoButtonMultiplier = getCookie("ABmultipliercookie");
+        buttonFactoryAmount = getCookie("BFamountcookie");
+        buttonFactoryMultiplier = getCookie("BFmultipliercookie);
         // make them be numbers and not bad strings
         number = parseInt(number);
         numberPerSecond = parseInt(numberPerSecond);
@@ -164,6 +175,10 @@
         upgradeCost = parseInt(upgradeCost);
         autoButtonCost = parseInt(autoButtonCost);
         buttonFactoryCost = parseInt(buttonFactoryCost);
+        autoButtonAmount = parseInt(autoButtonAmount);
+        autoButtonMultiplier = parseInt(autoButtonMultiplier);
+        buttonFactoryAmount = parseInt(buttonFactoryAmount);
+        buttonFactoryMultiplier = parseInt(buttonFactoryMultiplier);
         // load message
         document.getElementById('savemessage').innerHTML = "Loaded";
         await sleep(1000);
