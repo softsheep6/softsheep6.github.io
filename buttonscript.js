@@ -167,7 +167,7 @@
         autoButtonAmount = getCookie("ABamountcookie");
         autoButtonMultiplier = getCookie("ABmultipliercookie");
         buttonFactoryAmount = getCookie("BFamountcookie");
-        buttonFactoryMultiplier = getCookie("BFmultipliercookie);
+        buttonFactoryMultiplier = getCookie("BFmultipliercookie");
         // make them be numbers and not bad strings
         number = parseInt(number);
         numberPerSecond = parseInt(numberPerSecond);
