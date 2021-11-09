@@ -178,7 +178,7 @@
         //unlockBuffs();
     }
 
-    async function clickBuff() {
+    /*async function clickBuff() {
         if (clickbuffcooldown = false) {
             clickbuffcooldown = true;
             var unbuffedAddValue = numberAddValue;
