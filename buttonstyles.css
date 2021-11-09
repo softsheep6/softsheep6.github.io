@@ -51,14 +51,14 @@
     
     .number {text-align: center; font-size: 300%; margin-top: 0; margin-bottom: 0;}
     .savemessage {text-align: center; font-size: 75%; margin-top: 0; margin-bottom: 0;}
-    .buffs {text-align: center; margin-top: 0; margin-bottom: 0; background-color: #41a3e0;}
+    .buffs {text-align: center; margin-top: 0; margin-bottom: 0; background-color: #41a3e0; display: none;}
     .bufftext {text-align: center; font-size: 125%; margin-top: 0; margin-bottom: 0;}
 
     .text-left {text-align:left;}
     .text-right {text-align:right;}
     .text-center {text-align: center;}
     .add {background-color: #4CAF50;padding: 32px 32px;}
-    .add:hover {background-color: darkgreen;padding: 36px 36px;}
+    .add:hover {background-color: darkgreen; padding: 36px 36px;}
     .reset {background-color: red;}
     .reset:hover {background-color: darkred;}
     .upgrade {background-color: #9900cc;}
@@ -77,6 +77,6 @@
     
     /* unused */
     .sub {background-color: #008CBA;}
-    .mult {background-color: #008CBA;} /* Blue */
+    .mult {background-color: #008CBA;}
     .div {background-color: orange;}
     .win {background-color: #ff9900;}
