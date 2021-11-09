@@ -14,7 +14,7 @@
     var clickbuffcooldown = false;
     //var unlockedBuffsDisplayed = false;
     
-    async function updateNumber() {
+    function updateNumber() {
       document.getElementById('addButton').innerHTML = "Click to add " + numberAddValue + "!";
       document.getElementById('1').innerHTML = number;
       document.getElementById('numberPerSecondDisplay').innerHTML = numberPerSecond;
@@ -72,7 +72,7 @@
         document.body.style.background = "#cc7a00";
     }
 
-    async function autoButton() {
+    function autoButton() {
         while (number >= autoButtonCost) {
             updateNumber();
             number = (number-autoButtonCost);
