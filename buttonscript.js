@@ -14,7 +14,7 @@
     var buttonFactoryMultiplier = 1;
 
     var clickbuffcooldown = false;
-    var unlockedBuffsDisplayed = false;
+    //var unlockedBuffsDisplayed = false;
     
     function updateNumber() {
       document.getElementById('addButton').innerHTML = "Click to add " + numberAddValue + "!";
