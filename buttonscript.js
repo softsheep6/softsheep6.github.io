@@ -48,6 +48,10 @@
         buttonFactoryCost = 250;
         numberPerSecond = 0;
         numberAddValue = 1;
+        autoButtonAmount = 0;
+        buttonFactoryAmount = 0;
+        autoButtonMultiplier = 1;
+        buttonFactoryMultiplier = 1;
         document.getElementById('1').setAttribute = ('class', 'number')
         document.getElementById('1').setAttribute = ('id', '1')
         updateNumber();
