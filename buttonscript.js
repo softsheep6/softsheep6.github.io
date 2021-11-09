@@ -80,7 +80,7 @@
             number = (number-autoButtonCost);
             autoButtonAmount++;
             numberPerSecond += 1;
-            autoButtonCost += 10
+            autoButtonCost += 10;
             updateNumber();
             return;
         }
@@ -92,7 +92,7 @@
             number = (number-buttonFactoryCost);
             buttonFactoryAmount++;
             numberPerSecond += 5;
-            buttonFactoryCost += 50
+            buttonFactoryCost += 50;
             updateNumber();
             return;
         }
@@ -104,21 +104,21 @@
 
     async function numberPerSecondGiver() {
         while (true) {
-            number += (autoButtonAmount * autoButtonMultiplier)
-            number += (buttonFactoryAmount * buttonFactoryMultiplier)
-            updateNumber()
+            number += (autoButtonAmount * autoButtonMultiplier);
+            number += (buttonFactoryAmount * buttonFactoryMultiplier);
+            updateNumber();
             await sleep(1000);
         }
     }
     // coming soon
     function darkMode() {
     	document.body.style.background = "#262626";
-        document.getElementById('1').setAttribute('style', 'color:white')
-        document.getElementById('npsDisplayWords').setAttribute('style', 'color:white')
-        document.getElementById('numberPerSecondDisplay').setAttribute('style', 'color:white')
-        document.getElementById('options').setAttribute('style', 'color:white')
-        document.getElementById('hr1').setAttribute('style', 'color:white', 'width:25%', 'align:center')
-        document.getElementById('hr2').setAttribute('style', 'color:white')
+        document.getElementById('1').setAttribute('style', 'color:white');
+        document.getElementById('npsDisplayWords').setAttribute('style', 'color:white');
+        document.getElementById('numberPerSecondDisplay').setAttribute('style', 'color:white');
+        document.getElementById('options').setAttribute('style', 'color:white');
+        document.getElementById('hr1').setAttribute('style', 'color:white', 'width:25%', 'align:center');
+        document.getElementById('hr2').setAttribute('style', 'color:white');
         
     }
     // 2 confusing functions that i have no idea how they work but i am glad they do
