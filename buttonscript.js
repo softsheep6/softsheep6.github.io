@@ -12,6 +12,9 @@
     var buttonFactoryCost = 250;
     var buttonFactoryAmount = 0;
     var buttonFactoryMultiplier = 1;
+    var buttonCountryCost = 2000
+    var buttonCountryAmount = 0;
+    var buttonCountryMultiplier = 1;
 
     var clickbuffcooldown = false;
     //var unlockedBuffsDisplayed = false;
@@ -23,6 +26,7 @@
       document.getElementById('upgradeButton').innerHTML = "Upgrade click! (Cost: " + upgradeCost + ")";
       document.getElementById('autoButtonButton').innerHTML = "Buy auto button! (Cost: " + autoButtonCost + ")";
       document.getElementById('factoryButton').innerHTML = "Buy button factory! (Cost: " + buttonFactoryCost + ")";
+      document.getElementById('countryButton').innerHTML = "Buy button country! (Cost: " + buttonCountryCost + ")";
       //if (clickbuffcooldown = true) {
             //await sleep(600000);
             //clickbuffcooldown = false;
@@ -101,6 +105,17 @@
             return;
         }
     }
+
+    function buttonCountry() {
+        while (number >= buttonCountryCost) {
+            updateNumber();
+            number = (number-buttonCountryCost);
+            buttonCountryAmount++;
+            numberPerSecond += 40;
+            buttonFactoryCost += 250;
+            updateNumber();
+            return;
+    }
     // time
     function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
@@ -110,6 +125,7 @@
         while (true) {
             number += ((autoButtonAmount * 1) * autoButtonMultiplier);
             number += ((buttonFactoryAmount * 5) * buttonFactoryMultiplier);
+            number += ((buttonCountryAmount * 40) * buttonCountryMultiplier);
             updateNumber();
             await sleep(1000);
         }
@@ -151,10 +167,13 @@
         setCookie('clickupgradecookie', upgradeCost, 730);
         setCookie('autobuttoncookie', autoButtonCost, 730);
         setCookie('buttonfactorycookie', buttonFactoryCost, 730);
+        setCookie('buttoncountrycookie', buttonCountryCost, 730);
         setCookie('ABamountcookie', autoButtonAmount, 730);
         setCookie('ABmultipliercookie', autoButtonMultiplier, 730);
         setCookie('BFamountcookie', buttonFactoryAmount, 730);
         setCookie('BFmultipliercookie', buttonFactoryMultiplier, 730);
+        setCookie('BCamountcookie', buttonCountryAmount, 730);
+        setCookie('BCmultipliercookie', buttonCountryMultiplier, 730);
         // save message
         document.getElementById('savemessage').innerHTML = "Saved";
         await sleep(1000);
@@ -172,6 +191,9 @@
         autoButtonMultiplier = getCookie("ABmultipliercookie");
         buttonFactoryAmount = getCookie("BFamountcookie");
         buttonFactoryMultiplier = getCookie("BFmultipliercookie");
+        buttonCountryCost = getCookie("buttoncountrycookie);
+        buttonCountryAmount = getCookie("BCamountcookie");
+        buttonCountryMultiplier = getCookie("BCmultipliercookie);
         // make them be numbers and not bad strings
         number = parseInt(number);
         numberPerSecond = parseInt(numberPerSecond);
@@ -179,10 +201,13 @@
         upgradeCost = parseInt(upgradeCost);
         autoButtonCost = parseInt(autoButtonCost);
         buttonFactoryCost = parseInt(buttonFactoryCost);
+        buttonCountryCost = parseInt(buttonCountryCost);
         autoButtonAmount = parseInt(autoButtonAmount);
         autoButtonMultiplier = parseInt(autoButtonMultiplier);
         buttonFactoryAmount = parseInt(buttonFactoryAmount);
         buttonFactoryMultiplier = parseInt(buttonFactoryMultiplier);
+        buttonCountryAmount = parseInt(buttonCountry);
+        buttonCountryMultiplier = parseInt(buttonCountry);
         // load message
         document.getElementById('savemessage').innerHTML = "Loaded";
         await sleep(1000);
