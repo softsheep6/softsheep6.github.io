@@ -67,6 +67,8 @@
     .auto:hover {background-color: #8c8c8c;}
     .factory {background-color: #ed7e07;}
     .factory:hover {background-color: #b5630b;}
+    .country {background-color: #bfa937;}
+    .country:hover {background-color: #8a7a27;}
     .dark {background-color: #666666;}
     .dark:hover {background-color: #404040;}
     .save {background-color: #0066ff;}
