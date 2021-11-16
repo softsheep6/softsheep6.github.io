@@ -119,7 +119,6 @@
     // time
     function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
-        return true;
         }
 
     async function numberPerSecondGiver() {
