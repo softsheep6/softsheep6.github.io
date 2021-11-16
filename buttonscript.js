@@ -191,9 +191,9 @@
         autoButtonMultiplier = getCookie("ABmultipliercookie");
         buttonFactoryAmount = getCookie("BFamountcookie");
         buttonFactoryMultiplier = getCookie("BFmultipliercookie");
-        buttonCountryCost = getCookie("buttoncountrycookie);
+        buttonCountryCost = getCookie("buttoncountrycookie");
         buttonCountryAmount = getCookie("BCamountcookie");
-        buttonCountryMultiplier = getCookie("BCmultipliercookie);
+        buttonCountryMultiplier = getCookie("BCmultipliercookie");
         // make them be numbers and not bad strings
         number = parseInt(number);
         numberPerSecond = parseInt(numberPerSecond);
