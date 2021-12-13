@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Canvas Practice</title>
+
+<style>
+
+#myCanvas {
+	/*border:1px solid #909090*/
+}	
+
+</style>
+
+</head>
+<body>
+<h1> Very cool box </h1>
+<canvas id="myCanvas" width="500" height="400"></canvas>
+
+
+
+
+<script>
+
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+ctx.fillStyle = "#707070";
+ctx.fillRect(1, 1, 498, 398);
+ctx.fillStyle = "#606060";
+ctx.fillRect(5, 5, 488, 388);
+ctx.fillStyle = "#505050";
+ctx.fillRect(10, 10, 478, 378);
+ctx.fillStyle = "#404040";
+ctx.fillRect(15, 15, 468, 368);
+ctx.fillStyle = "#303030";
+ctx.fillRect(20, 20, 458, 358);
+ctx.fillStyle = "#202020";
+ctx.fillRect(25, 25, 448, 348);
+ctx.fillStyle = "#101010";
+ctx.fillRect(30, 30, 438, 338);
+ctx.fillStyle = "#050505";
+ctx.fillRect(35, 35, 428, 328);
+ctx.fillStyle = "#010101";
+ctx.fillRect(40, 40, 418, 318);
+
+</script>
+
+
+</body>
+</html>
+
+
