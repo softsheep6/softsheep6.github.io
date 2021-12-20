@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rock Paper Scissors</title>
+
+<style>
+body {background-color:#adadad;}
+img {width:50px;height:50px;}
+button {width:33px;height:33px;}
+.text-center {text-align: center;}
+</style>
+
+</head>
+<body>
+
+<!--<h1> Rock paper scissors </h1>-->
+
+<div class="text-center">
+<button type="button" id="rock" onclick="runRock()">🪨</button>
+<button type="button" id="paper" onclick="runPaper()">📜</button>
+<button type="button" id="scissors" onclick="runScissors()">✂</button>
+</div>
+
+<h2 id="WorL"></h2>
+
+<div class="text-center">
+<img id="choice" src="">
+<img id="rngchoice" src="">
+</div>
+
+<script>
+
+var playerchoice;
+function getRndInteger() {
+	var rngchoiceimg = document.getElementById("rngchoice");
+	var rps = new Array();
+    rps[1] = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUKhrwnhDjRmwFDGFSOvzAIJiYfzLloPGBOFoND5zi-RRmWGhTVjI9lA_Ly-uTiZWVTpo:https://images.emojiterra.com/google/android-11/512px/1faa8.png&usqp=CAU";
+    rps[2] = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnt4AX-HMN7eLQT3Iy3VclCHqIt9BGEiirfrc1oGnmsFzSjqIgVnLE4kAVN3J1YN0r1II:https://aph.nyc3.digitaloceanspaces.com/app/uploads/2019/04/26160704/1-04851-00_BL_Notebook_Paper_Punch_G-600x735.jpg&usqp=CAU";
+    rps[3] = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTs0un59eHJCZjKdTgTEaraMDbDH8q63yep7WW8cr7oALgRfcfiSbKelfQrdcvC60MWdmg:https://emojipedia-us.s3.amazonaws.com/source/skype/289/scissors_2702-fe0f.png&usqp=CAU";
+	var rnd = Math.floor(Math.random() * rps.length);
+    if(rnd == 0) {
+        rnd = 1;
+    }
+    rngchoiceimg.src = rps[rnd];
+}
+
+
+
+function runRock() {
+	var choiceimg = document.getElementById("choice");
+    choiceimg.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUKhrwnhDjRmwFDGFSOvzAIJiYfzLloPGBOFoND5zi-RRmWGhTVjI9lA_Ly-uTiZWVTpo:https://images.emojiterra.com/google/android-11/512px/1faa8.png&usqp=CAU";
+	playerchoice = 1;
+    getRndInteger();
+    
+}
+function runPaper() {
+	var choiceimg = document.getElementById("choice");
+    choiceimg.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnt4AX-HMN7eLQT3Iy3VclCHqIt9BGEiirfrc1oGnmsFzSjqIgVnLE4kAVN3J1YN0r1II:https://aph.nyc3.digitaloceanspaces.com/app/uploads/2019/04/26160704/1-04851-00_BL_Notebook_Paper_Punch_G-600x735.jpg&usqp=CAU";
+    playerchoice = 2;
+    getRndInteger();
+}
+function runScissors() {
+	var choiceimg = document.getElementById("choice");
+    choiceimg.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTs0un59eHJCZjKdTgTEaraMDbDH8q63yep7WW8cr7oALgRfcfiSbKelfQrdcvC60MWdmg:https://emojipedia-us.s3.amazonaws.com/source/skype/289/scissors_2702-fe0f.png&usqp=CAU";
+    playerchoice = 3;
+    getRndInteger();
+}
+
+
+</script>
+
+</body>
+</html>
+
+
