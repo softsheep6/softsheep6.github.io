@@ -183,7 +183,7 @@
       document.getElementById('upgradeButton').innerHTML = "Upgrade click! (Cost: " + upgradeCost + ")";
       document.getElementById('autoButtonButton').innerHTML = "Buy auto button! (Cost: " + autoButtonCost + ")";
       document.getElementById('factoryButton').innerHTML = "Buy button factory! (Cost: " + buttonFactoryCost + ")";
-      document.getElementById('countryButton').innerHTML = "Buy button country! (Cost: " + buttonCountryCost + ")";
+      //document.getElementById('countryButton').innerHTML = "Buy button country! (Cost: " + buttonCountryCost + ")";
       //if (clickbuffcooldown = true) {
             //await sleep(600000);
             //clickbuffcooldown = false;
@@ -240,7 +240,7 @@
     }
 
     function autoButton() {
-        while (number >= autoButtonCost) {
+        if (number >= autoButtonCost) {
             updateNumber();
             number = (number-autoButtonCost);
             autoButtonAmount++;
