@@ -114,8 +114,8 @@
             numberPerSecond += 40;
             buttonFactoryCost += 250;
             updateNumber();
-            return;*/
-    }
+            return;
+    }*/
     // time
     function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
