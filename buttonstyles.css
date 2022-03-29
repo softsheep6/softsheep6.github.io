@@ -71,8 +71,8 @@
     .country:hover {background-color: #8a7a27;}
     .dark {background-color: #666666;}
     .dark:hover {background-color: #404040;}
-    .light {background-color:#e7f5fe;}
-    .light:hover {background-color:#b6e1fc;}
+    .light {background-color:#e7f5fe;color:black;display:none;}
+    .light:hover {background-color:#b6e1fc;color:black;display:none;}
     .save {background-color: #0066ff;}
     .save:hover {background-color: #0000ff;}
     .cbuff {background-color: #f151ff; width: 7.5px; height: 16px;}
