@@ -130,7 +130,7 @@
             await sleep(1000);
         }
     }
-    // coming soon
+
     function darkMode() {
         changeColor('white', '1');
         changeColor('white', 'npsDisplayWords');
@@ -139,6 +139,20 @@
         changeColor('white', 'hr1');
         changeColor('white', 'hr2');
         changeBgColor('#262626', 'body');
+        document.getElementById("darkModeButton").style.display = "none";
+        document.getElementById("lightModeButton").style.display = "inline";
+        
+    }
+    function lightMode() {
+        changeColor('black', '1');
+        changeColor('black', 'npsDisplayWords');
+        changeColor('black', 'numberPerSecondDisplay');
+        changeColor('black', 'options');
+        changeColor('black', 'hr1');
+        changeColor('black', 'hr2');
+        changeBgColor('lightskyblue', 'body');
+        document.getElementById("darkModeButton").style.display = "inline";
+        document.getElementById("lightModeButton").style.display = "none";
     }
         
     function changeColor(newColor, newId) {
