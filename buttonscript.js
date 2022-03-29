@@ -138,6 +138,7 @@
         changeColor('white', 'options');
         changeColor('white', 'hr1');
         changeColor('white', 'hr2');
+        changeColor('white', 'savemessage');
         changeBgColor('#262626', 'body');
         document.getElementById("darkModeButton").style.display = "none";
         document.getElementById("lightModeButton").style.display = "inline";
@@ -150,6 +151,7 @@
         changeColor('black', 'options');
         changeColor('black', 'hr1');
         changeColor('black', 'hr2');
+        changeColor('black', 'savemessage');
         changeBgColor('lightskyblue', 'body');
         document.getElementById("darkModeButton").style.display = "inline";
         document.getElementById("lightModeButton").style.display = "none";
