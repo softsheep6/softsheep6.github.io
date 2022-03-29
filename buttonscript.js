@@ -138,7 +138,7 @@
         changeColor('white', 'options');
         changeColor('white', 'hr1');
         changeColor('white', 'hr2');
-        changeBgColor(#262626, 'body');
+        changeBgColor('#262626', 'body');
     }
         
     function changeColor(newColor, newId) {
