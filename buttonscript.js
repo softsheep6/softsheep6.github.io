@@ -12,11 +12,11 @@
     var buttonFactoryCost = 250;
     var buttonFactoryAmount = 0;
     var buttonFactoryMultiplier = 1;
-    var buttonCountryCost = 2000
-    var buttonCountryAmount = 0;
-    var buttonCountryMultiplier = 1;
+    //var buttonCountryCost = 2000
+    //var buttonCountryAmount = 0;
+    //var buttonCountryMultiplier = 1;
 
-    var clickbuffcooldown = false;
+    //var clickbuffcooldown = false;
     //var unlockedBuffsDisplayed = false;
     
     function updateNumber() {
@@ -26,7 +26,7 @@
       document.getElementById('upgradeButton').innerHTML = "Upgrade click! (Cost: " + upgradeCost + ")";
       document.getElementById('autoButtonButton').innerHTML = "Buy auto button! (Cost: " + autoButtonCost + ")";
       document.getElementById('factoryButton').innerHTML = "Buy button factory! (Cost: " + buttonFactoryCost + ")";
-      document.getElementById('countryButton').innerHTML = "Buy button country! (Cost: " + buttonCountryCost + ")";
+      //document.getElementById('countryButton').innerHTML = "Buy button country! (Cost: " + buttonCountryCost + ")";
       //if (clickbuffcooldown = true) {
             //await sleep(600000);
             //clickbuffcooldown = false;
@@ -106,7 +106,7 @@
         }
     }
 
-    function buttonCountry() {
+    /*function buttonCountry() {
         while (number >= buttonCountryCost) {
             updateNumber();
             number = (number-buttonCountryCost);
@@ -114,7 +114,7 @@
             numberPerSecond += 40;
             buttonFactoryCost += 250;
             updateNumber();
-            return;
+            return;*/
     }
     // time
     function sleep(ms) {
@@ -132,15 +132,26 @@
     }
     // coming soon
     function darkMode() {
-    	document.body.style.background = "#262626";
-        document.getElementById('1').setAttribute('style', 'color:white');
-        document.getElementById('npsDisplayWords').setAttribute('style', 'color:white');
-        document.getElementById('numberPerSecondDisplay').setAttribute('style', 'color:white');
-        document.getElementById('options').setAttribute('style', 'color:white');
-        document.getElementById('hr1').setAttribute('style', 'color:white', 'width:25%', 'align:center');
-        document.getElementById('hr2').setAttribute('style', 'color:white');
-        
+        changeColor('white', '1');
+        changeColor('white', 'npsDisplayWords');
+        changeColor('white', 'numberPerSecondDisplay');
+        changeColor('white', 'options');
+        changeColor('white', 'hr1');
+        changeColor('white', 'hr2');
+        changeBgColor(#262626, 'body');
     }
+        
+    function changeColor(newColor, newId) {
+        var elem = document.getElementById(newId);
+        elem.style.color = newColor;
+    }
+
+    function changeBgColor(newColor, newId) {
+        var elem = document.getElementById(newId);
+        elem.style.backgroundColor = newColor;
+    }
+
+
     // 2 confusing functions that i have no idea how they work but i am glad they do
     function getCookie(cName) {
         const name = cName + "=";
@@ -244,3 +255,25 @@
         }
         
     }*/
+
+
+
+
+
+//old code i dont need but i kinda wanna keep idk why
+/*
+
+    // for dark mode
+    	document.body.style.background = "#262626";
+        document.getElementById('1').setAttribute('style', 'color:white');
+        document.getElementById('npsDisplayWords').setAttribute('style', 'color:white');
+        document.getElementById('numberPerSecondDisplay').setAttribute('style', 'color:white');
+        document.getElementById('options').setAttribute('style', 'color:white');
+        document.getElementById('hr1').setAttribute('style', 'color:white', 'width:25%', 'align:center');
+        document.getElementById('hr2').setAttribute('style', 'color:white');
+        
+        
+        
+        
+        
+*/
