@@ -75,12 +75,49 @@
     .light:hover {background-color:#b6e1fc;color:black;display:none;}
     .save {background-color: #0066ff;}
     .save:hover {background-color: #0000ff;}
-    .cbuff {background-color: #f151ff; width: 7.5px; height: 16px;}
-    .cbuff:hover {background-color: #f111ff; width: 9px; height: 18px;}
     .hr1 {width: 25%;}
+    
+    .upgradepannel {
+      position: absolute;
+      right:1%;
+      background-color:lightseagreen;
+      width:250px;
+      height:350px;
+      display:none;
+	  border: outset 3px gray;
+    }
+    .upgradespanneltext{
+      text-align:center;
+      font-size:40px;
+      text-decoration:underline;
+      display:inline;
+      margin-left:40px;
+    }
+    .agoodnameforaclassthatopensandclosestheupgradespannelalsowowistherenolimittohowlongaclasscanbethisisprettyfunny {
+      position: absolute;
+      right:1%;
+      border-radius: 12px;
+      background-color:#1b9891;
+      float:right;
+	  height:40px;
+	  width:100px;
+	  font-size:15px;
+    }
+	
+	.theotherbuttonthatsprobablyhidden {
+	  position: absolute;
+      right:1%;
+      border-radius: 12px;
+      background-color:#1b9891;
+      float:right;
+	  display:none;
+	  
+	}
     
     /* unused */
     .sub {background-color: #008CBA;}
     .mult {background-color: #008CBA;}
     .div {background-color: orange;}
     .win {background-color: #ff9900;}
+    .cbuff {background-color: #f151ff; width: 7.5px; height: 16px;}
+    .cbuff:hover {background-color: #f111ff; width: 9px; height: 18px;}
