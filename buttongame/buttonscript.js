@@ -166,6 +166,24 @@
         var elem = document.getElementById(newId);
         elem.style.backgroundColor = newColor;
     }
+    
+    function openUpgrades() {
+    	document.getElementById('upgradespannel').style.display = 'block';
+		document.getElementById('longname').style.display = 'block';
+		document.getElementById('shortname').style.display = 'none';
+    }
+	
+	function closeUpgrades() {
+		document.getElementById('upgradespannel').style.display = 'none';
+		document.getElementById('longname').style.display = 'none';
+		document.getElementById('shortname').style.display = 'block';
+	}
+	
+	function idktest(newThing, newDisplay) {
+		var idontknow = document.getElementById(newThing);
+		idontknow.style.display = newDisplay;
+	}
+    
 
 
     // 2 confusing functions that i have no idea how they work but i am glad they do
