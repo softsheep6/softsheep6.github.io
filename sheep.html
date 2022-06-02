@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>sheep</title>
+  <style> 
+  
+  .sheep {
+    width: 97.6px;
+    height: 54.9px;
+    position: absolute;
+  }
+  
+  </style>
+</head>
+<body onLoad="makesheepgo()">
+
+
+<img src="https://ichef.bbci.co.uk/news/976/cpsprodpb/66D8/production/_123282362_hi042879001.jpg" onClick="collectsheep()" id="sheep" class="sheep">
+
+
+
+
+  <script> 
+  
+  var randomwidth = Math.floor(Math.random() * 100);
+  var randomlength = Math.floor(Math.random() * 100);
+  console.log(randomwidth, randomlength)
+  
+  function makesheepgo() {
+  	randomlength = String(randomlength);
+  	randomwidth = String(randomwidth);
+    document.getElementById('sheep').style.top = randomlength + "%";
+    document.getElementById('sheep').style.right = randomwidth + "%";
+  }
+  
+  function collectsheep() {
+  	randomwidth = Math.floor(Math.random() * 100);
+    randomlength = Math.floor(Math.random() * 100);
+    randomlength = String(randomlength);
+  	randomwidth = String(randomwidth);
+    document.getElementById('sheep').style.top = randomlength + "%";
+    document.getElementById('sheep').style.right = randomwidth + "%";
+  }
+    
+  </script>
+</body>
+</html>
