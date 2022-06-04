@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>sheep</title>
-  <style> 
+<title></title>
+  <style>
   
   .sheep {
     width: 97.6px;
@@ -17,35 +17,54 @@
 <h1 id="score">
 Score: 0
 </h1>
+<h1 id="timedisplay">
+Time: 0.0
+</h1>
 <img src="https://ichef.bbci.co.uk/news/976/cpsprodpb/66D8/production/_123282362_hi042879001.jpg" onClick="collectsheep()" id="sheep" class="sheep">
 
 
 
 
-  <script> 
+
+  <script>
   
   var randomwidth = Math.floor(Math.random() * 100);
-  var randomlength = Math.floor(Math.random() * 100);
-  var score = 0;
-  
-  function makesheepgo() {
-  	randomlength = String(randomlength);
-  	randomwidth = String(randomwidth);
+var randomlength = Math.floor(Math.random() * 100);
+var score = 0;
+var time = 0;
+var testtorf = false;
+
+function makesheepgo() {
+	randomlength = String(randomlength);
+	randomwidth = String(randomwidth);
     document.getElementById('sheep').style.top = randomlength + "%";
     document.getElementById('sheep').style.right = randomwidth + "%";
-  }
-  
-  function collectsheep() {
-  	randomwidth = Math.floor(Math.random() * 100);
+}
+
+function collectsheep() {
+	randomwidth = Math.floor(Math.random() * 100);
     randomlength = Math.floor(Math.random() * 100);
     randomlength = String(randomlength);
-  	randomwidth = String(randomwidth);
+	randomwidth = String(randomwidth);
     document.getElementById('sheep').style.top = randomlength + "%";
     document.getElementById('sheep').style.right = randomwidth + "%";
     score++
     document.getElementById('score').innerHTML = "Score: " + score;
-  }
+    time = 0;
     
+}
+
+var refreshIntervalId = setInterval(othertest, 100)
+
+function othertest() {
+  if (testtorf == false) {
+  	  time += 0.1;
+  	  time = Math.round(10*time)/10;
+  	  document.getElementById('timedisplay').innerHTML = "Time: " + time;
+  }
+}
+
+  
   </script>
 </body>
 </html>
