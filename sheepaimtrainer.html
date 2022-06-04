@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title></title>
-  <style>
-  
-  .sheep {
+<title>sheep aim trainer</title>
+<style>
+
+.sheep {
     width: 97.6px;
     height: 54.9px;
     position: absolute;
-  }
-  
-  </style>
+}
+
+</style>
 </head>
 <body onLoad="makesheepgo()">
 
@@ -18,53 +18,75 @@
 Score: 0
 </h1>
 <h1 id="timedisplay">
-Time: 0.0
+Time: 0.00
+</h1>
+<h1 id="btdisplay">
+PB: None
 </h1>
 <img src="https://ichef.bbci.co.uk/news/976/cpsprodpb/66D8/production/_123282362_hi042879001.jpg" onClick="collectsheep()" id="sheep" class="sheep">
 
 
 
 
+<script>
 
-  <script>
-  
-  var randomwidth = Math.floor(Math.random() * 100);
+var randomwidth = Math.floor(Math.random() * 100);
 var randomlength = Math.floor(Math.random() * 100);
 var score = 0;
 var time = 0;
 var testtorf = false;
+var besttime = 9999999999999;
+var sheepcollected = false;
+var sheepcollected2 = false;
 
 function makesheepgo() {
 	randomlength = String(randomlength);
 	randomwidth = String(randomwidth);
     document.getElementById('sheep').style.top = randomlength + "%";
     document.getElementById('sheep').style.right = randomwidth + "%";
+    
 }
 
 function collectsheep() {
 	randomwidth = Math.floor(Math.random() * 100);
     randomlength = Math.floor(Math.random() * 100);
     randomlength = String(randomlength);
-	randomwidth = String(randomwidth);
+	randomwidth = String(randomwidth); 
     document.getElementById('sheep').style.top = randomlength + "%";
     document.getElementById('sheep').style.right = randomwidth + "%";
     score++
     document.getElementById('score').innerHTML = "Score: " + score;
+    if (sheepcollected == false) {
+        var refreshIntervalId = setInterval(othertest, 10);
+        sheepcollected = true
+        document.getElementById('btdisplay').innerHTML = "PB: None";
+    }
+    if (time < besttime) {
+        besttime = time;
+    }
     time = 0;
-    
+    document.getElementById('btdisplay').innerHTML = 'PB: ' + besttime;
+    if (sheepcollected2 == false) {
+        document.getElementById('btdisplay').innerHTML = "PB: None";
+        sheepcollected2 = true;
+}
+    if (besttime == 0) {
+     besttime = 99999;
+     document.getElementById('btdisplay').innerHTML = "PB: None";
+}
 }
 
-var refreshIntervalId = setInterval(othertest, 100)
+
 
 function othertest() {
   if (testtorf == false) {
-  	  time += 0.1;
-  	  time = Math.round(10*time)/10;
+  	  time += 0.01;
+  	  time = Math.round(100*time)/100;
   	  document.getElementById('timedisplay').innerHTML = "Time: " + time;
   }
 }
 
-  
-  </script>
+
+</script>
 </body>
 </html>
