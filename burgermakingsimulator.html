@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  .image {
+    width: 250px;
+    height: 250px;
+    position: relative;
+    left: 0px;
+}
+</style>
+</head>
+<body>
+
+<h1 id="score">
+score: 0
+</h1>
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Black_colour.jpg/640px-Black_colour.jpg" class="image" id="image">
+
+<br><br>
+<button onClick="stopcheck += '1'">
+1
+</button>
+<button onClick="stopcheck += '2'">
+2
+</button>
+<button onClick="stopcheck += '3'">
+3
+</button>
+<br>
+<button onClick="stopcheck = ''">
+clear combination
+</button>
+
+<p id="randomdisplay">
+button order: 123
+</p>
+
+<script>
+const myInterval = setInterval(move, 10);
+var myInterval2 = "";
+var amountmoved = 0;
+var stopcheck = "";
+var combination = 0;
+var buttonpressreq = "123";
+var score = 0;
+
+function move() {
+  amountmoved += 1;
+  document.getElementById("image").style.left = amountmoved + "px";
+  document.getElementById("score").innerHTML = "score: " + score;
+  if (stopcheck == buttonpressreq) {
+    testokcool();
+    stopcheck = "";
+  }
+}
+
+function testokcool() {
+  document.getElementById("image").style.display = "none";
+  myInterval2 = setInterval(testokcoolpart2, 1000);
+}
+
+function testokcoolpart2() {
+  clearInterval(myInterval2);
+  combination = Math.floor(Math.random() * 7);
+  document.getElementById("image").style.display = "block";
+  if (combination == 0) {
+    buttonpressreq = "123";
+  } else if (combination == 1) {
+    buttonpressreq = "1";
+  } else if (combination == 2) {
+    buttonpressreq = "2";
+  } else if (combination == 3) {
+    buttonpressreq = "3";
+  } else if (combination == 4) {
+    buttonpressreq = "12";
+  } else if (combination == 5) {
+    buttonpressreq = "13";
+  } else if (combination == 6) {
+    buttonpressreq = "23";
+  }
+  document.getElementById("randomdisplay").innerHTML = "button order: " + buttonpressreq;
+  score += 1;
+  amountmoved = 0;
+}
+
+</script>
+</body>
+</html>
