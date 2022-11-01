@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>🐑</title>
+</head>
+<body>
+
+<p id="troll">
+Please patiently await next hint:
+</p>
+<p id="timer">
+120
+</p>
+<img id="funnyimage" src="">
+
+
+<script>
+var time = 5;
+var yea = true;
+
+function okfunction() {
+document.getElementById("timer").innerHTML = time;
+if (time <= 0) {
+
+document.getElementById("funnyimage").src = "https://um-insight.net/downloads/6662/download/redherring.png?cb=f0049ac82d220d20db8c9d9bba5547b1";
+
+document.getElementById("timer").style.display = "none"
+
+document.getElementById("troll").innerHTML = "Keep looking!"
+yea = false;
+} else {
+time-=1;
+}
+}
+
+setInterval(okfunction, 1000);
+</script>
+</body>
