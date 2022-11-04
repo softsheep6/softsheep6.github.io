@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+</head>
+<body>
+
+
+<p id="hint">
+want a hint?
+</p>
+<button onClick="yes()" id="yes">
+yes
+</button>
+<button onClick="no()" id="no">
+no
+</button>
+<button onClick="button3()" id="button3">
+button 3
+</button>
+
+  <script>
+    function yes() {
+    document.getElementById('hint').innerHTML = "same i do too";
+    document.getElementById('yes').style.display = "none";
+    document.getElementById('no').style.display = "none";
+    document.getElementById('button3').style.display = "none";
+}
+
+function no() {
+    document.getElementById('hint').innerHTML = "well too bad youre gonna get one anyways<br><br><br>(double check those emojis)";
+    document.getElementById('yes').style.display = "none";
+    document.getElementById('no').style.display = "none";
+    document.getElementById('button3').style.display = "none";
+}
+function button3() {
+	document.getElementById('hint').innerHTML = "wow this button actually was the button to launch 83 billion nuclear missiles into earth how could you just click it for no reason now we are gonna die wait nvm that was button 4 i got rid of button 4 a while ago ur fine";
+    document.getElementById('yes').style.display = "none";
+    document.getElementById('no').style.display = "none";
+    document.getElementById('button3').style.display = "none";
+}
+  </script>
+</body>
+</html>
