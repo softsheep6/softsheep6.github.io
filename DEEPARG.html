@@ -64,6 +64,8 @@ function teest() {
     // edit below line to change password
     if (pwvalue == "password to continue" && enterDown == true || pwvalue == "password" && enterDown == true) {
         document.getElementById('pwhead').innerHTML = 'Thanks';
+    } else if (pwvalue == "failphrase" && enterDown == true) {
+    	document.getElementById('pwhead').innerHTML = 'Do not';
     }
 }
 
