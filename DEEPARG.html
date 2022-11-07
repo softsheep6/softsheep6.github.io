@@ -3,8 +3,9 @@
 <head>
 <title>DEEPARG</title>
 <link href='https://fonts.googleapis.com/css?family=Source Code Pro' rel='stylesheet'>
-<style>
-body {
+<link rel="shortcut icon" type="image/png" href="deepargfavicon.png"/>
+    <style>
+        body {
     background-color: #aaaacc;
     font-family: 'Source Code Pro';
 }
@@ -22,16 +23,65 @@ hr {
 .hr1 {width: 33%;top: -80px;}
 .hr2 {width: 25%;top: -80px;}
 .hr3 {width: 15%;top: -80px;}
-</style>
+h2 {
+    font-size: 32px;
+}
+.passwordinput {
+    width: 300px;
+    height: 30px;
+    font-size: 20px;
+    background-color: #c1c1e8;
+}
+    </style>
 </head>
 <body>
-
+<div>
 <h1>
 DEEPARG
 </h1>
 <hr class="hr1"><hr class="hr2"><hr class="hr3">
+</div>
+<!-- boooring heading stuff above it is so yawn emoji-->
+
+<h2 id="pwhead">
+Enter password to continue...
+</h2>
+<input type="text" id="password" name="password" size="10" class="passwordinput">
 
 
 
+
+
+<script>
+    // varable
+var pwvalue = document.getElementById('password').value
+var enterDown = false;
+
+
+// always running function
+function teest() {
+    pwvalue = document.getElementById('password').value
+    // edit below line to change password
+    if (pwvalue == "password to continue" && enterDown == true || pwvalue == "password" && enterDown == true) {
+        document.getElementById('pwhead').innerHTML = 'Thanks';
+    }
+}
+
+
+// i stole this code this is not mine i am a thief LLLL
+document.addEventListener('keydown', (event) => {
+  var name = event.key;
+  var code = event.code;
+  
+  if (name === 'Enter') {
+        enterDown = true;
+    } else {
+    	enterDown = false;
+    }
+}, false);
+
+//RUN gogogogo
+setInterval(teest, 100);
+    </script>
 </body>
 </html>
