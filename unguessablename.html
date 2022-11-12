@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ARG MINIGAME 1</title>
+<link rel="shortcut icon" type="image/png" href="deepargfavicon.png"/>
+  
+  <style>
+    .sheep {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+}
+.WorL {
+	position: absolute;
+	left: 35%;
+	top: 35%;
+	font-size: 72px;
+	display: none;
+}
+.likeeverything {
+	display: none;
+}
+.openingmessage {
+	display: inline;
+	background-color: lightgray;
+	border: black 3px double;
+}
+  </style>
+</head>
+<body onLoad="makesheepgo()">
+
+<h1 class="openingmessage" id="openingmessage" onClick="openingmessage()">
+welcome to minigame #1 click me to continue
+</h1>
+
+<div class="likeeverything" id="likeeverything">
+<h1 id="score">
+Score: 0/25
+</h1>
+<h1 id="timedisplay">
+Time remaining: 20.00
+</h1>
+<!-- <h1 id="btdisplay">
+PB: None
+</h1> -->
+<img src="https://cdn.discordapp.com/attachments/659049041283252234/1041097063028494426/softsheep13.png" onClick="collectsheep()" id="sheep" class="sheep">
+<h1 class="WorL" id="WorL">
+YOU WIN
+</h1>
+</div>
+
+
+
+<script>
+  var randomwidth = Math.floor(Math.random() * 100);
+var randomlength = Math.floor(Math.random() * 100);
+var score = 0;
+var time = 20;
+var testtorf = false;
+var besttime = 9999999999999;
+var sheepcollected = false;
+var sheepcollected2 = false;
+var timecontinuecheck = true;
+
+function openingmessage() {
+	document.getElementById('openingmessage').style.display = 'none';
+	document.getElementById('likeeverything').style.display = 'inline';
+}
+
+
+function makesheepgo() {
+  // make sure starting random positions arent out of bounds or annoying to click
+  if (randomlength > 75) {
+  	randomlength = 75;
+  }
+  if (randomwidth > 90) {
+  	randomwidth = 90;
+  }
+  
+  randomlength = String(randomlength);
+  randomwidth = String(randomwidth);
+  document.getElementById('sheep').style.top = randomlength + "%";
+  document.getElementById('sheep').style.right = randomwidth + "%";
+}
+
+function collectsheep() {
+
+  randomwidth = Math.floor(Math.random() * 100);
+  randomlength = Math.floor(Math.random() * 100);
+    // make sure random positions arent out of bounds or annoying to click
+  if (randomlength > 75) {
+  	randomlength = 75;
+  }
+  if (randomwidth > 90) {
+  	randomwidth = 90;
+  }
+  randomlength = String(randomlength);
+  randomwidth = String(randomwidth);
+  
+  
+  document.getElementById('sheep').style.top = randomlength + "%";
+  document.getElementById('sheep').style.right = randomwidth + "%";
+  score++
+  document.getElementById('score').innerHTML = "Score: " + score + "/25";
+  if (sheepcollected == false) {
+    var refreshIntervalId = setInterval(othertest, 10);
+    sheepcollected = true
+  }
+  if (time < besttime) {
+    besttime = time;
+  }
+  if (sheepcollected2 == false) {
+    sheepcollected2 = true;
+  }
+}
+
+
+
+function othertest() {
+    if (time > 0 && timecontinuecheck == true) {
+		time -= 0.01;
+	} else if (time < 0) {
+		time = 0;
+	}
+    time = Math.round(100 * time) / 100;
+    document.getElementById('timedisplay').innerHTML = "Time remaining: " + time;
+	
+	// game end checker
+	if (time > 0 && score >= 25) {
+		document.getElementById('WorL').style.display = "inline";
+		document.getElementById('sheep').style.display = "none";
+		timecontinuecheck = false;
+	} else if (time <= 0 && score < 25){
+		document.getElementById('WorL').innerHTML = "YOU LOSE LLLLL SOOO BAD GET BETTER";
+		document.getElementById('WorL').style.display = "inline";
+		document.getElementById('sheep').style.display = "none";
+	}
+}
+</script>
+</body>
+</html>
