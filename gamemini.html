@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ARG MINIGAME 2</title>
+<link rel="shortcut icon" type="image/png" href="deepargfavicon.png">
+<link href='https://fonts.googleapis.com/css?family=Source Code Pro' rel='stylesheet'>
+<style>
+.openingmessage {
+	display: inline;
+	background-color: lightgray;
+	border: black 3px double;
+	position: absolute;
+	top: 45%;
+	left: 35%;
+}
+.likeeverything {
+	/* UNCOMMENT OUT WHEN DONE */
+	display: none;
+}
+.instructions {
+	position: absolute;
+	top: 20%;
+	left: 35%;
+	font-size: 36px;
+}
+.timedisplay {
+	position: absolute;
+	top: 26.5%;
+	left: 35%;
+}
+.lpmdisplay {
+	position: absolute;
+	top: 29%;
+	left: 35%;
+}
+.textbox {
+	border: 4px solid black;
+	border-radius: 5px;
+	width: 300px;
+	height: 30px;
+	font-size: 24px;
+	position: absolute;
+	top: 50%;
+	left: 35%;
+}
+.letter {
+	color: red;
+	font-size: 72px;
+	font-family: 'Source Code Pro';
+	position: absolute;
+	top: 30%;
+	left: 47%;
+}
+.WorL {
+	position: absolute;
+	left: 35%;
+	top: 35%;
+	font-size: 72px;
+	display: none;
+}
+</style>
+</head>
+<body>
+<!-- UNCOMMENT OUT WHEN DONE -->
+<h1 class="openingmessage" id="openingmessage" onClick="openingmessage()">
+welcome to minigame #2 click me to continue
+</h1>
+
+<div class="likeeverything" id="likeeverything">
+
+<h1 class="instructions">
+ Type the letters that appear!
+</h1>
+<h3 id="timedisplay" class="timedisplay">
+Time: 30.00
+</h3>
+<h3 id="lpmdisplay" class="lpmdisplay" title="sorry i couldnt figure out how to get a real time display of letters per minute (without looking it up) but you will find out after the time is up">
+Letters per minute: ?/90
+</h3>
+
+<h1 id="letter" class="letter"></h1>
+
+<input type="text" id="textbox" name="textbox" class="textbox" maxlength="1">
+
+
+
+<h1 class="WorL" id="WorL">
+YOU WIN
+</h1>
+
+</div>
+
+
+<script>
+//varable
+var letter;
+var type = "";
+var textboxvalue = document.getElementById('textbox').value
+var time = 30;
+var timecontinuecheck = true;
+var lettersperminute = 0;
+var gamestart = false;
+var gameend = false;
+var score = 0;
+
+
+
+function generateRandomLetter() {
+	letter = Math.random() * 26;
+	letter = Math.floor(letter);
+	if (letter == 0) {
+		type = "a"
+	} else if (letter == 1) {
+		type = "b"
+	} else if (letter == 2) {
+		type = "c"
+	} else if (letter == 3) {
+		type = "d"
+	} else if (letter == 4) {
+		type = "e"
+	} else if (letter == 5) {
+		type = "f"
+	} else if (letter == 6) {
+		type = "g"
+	} else if (letter == 7) {
+		type = "h"
+	} else if (letter == 8) {
+		type = "i"
+	} else if (letter == 9) {
+		type = "j"
+	} else if (letter == 10) {
+		type = "k"
+	} else if (letter == 11) {
+		type = "l"
+	} else if (letter == 12) {
+		type = "m"
+	} else if (letter == 13) {
+		type = "n"
+	} else if (letter == 14) {
+		type = "o"
+	} else if (letter == 15) {
+		type = "p"
+	} else if (letter == 16) {
+		type = "q"
+	} else if (letter == 17) {
+		type = "r"
+	} else if (letter == 18) {
+		type = "s"
+	} else if (letter == 19) {
+		type = "t"
+	} else if (letter == 20) {
+		type = "u"
+	} else if (letter == 21) {
+		type = "v"
+	} else if (letter == 22) {
+		type = "w"
+	} else if (letter == 23) {
+		type = "x"
+	} else if (letter == 24) {
+		type = "y"
+	} else if (letter == 25) {
+		type = "z"
+	}
+}
+
+function checkTextValue() {
+	textboxvalue = document.getElementById('textbox').value
+	document.getElementById('letter').innerHTML = type;
+	lettersperminute = score*2;
+	if (textboxvalue == type && gamestart == false && gameend == false) {
+		score += 1;
+		document.getElementById('textbox').value = "";
+		generateRandomLetter();
+		setInterval(setTimer, 10);
+		gamestart = true;
+	}
+	if (textboxvalue == type && gameend == false) {
+		score += 1;
+		document.getElementById('textbox').value = "";
+		generateRandomLetter();
+	} else {
+		document.getElementById('textbox').value = "";
+	}
+}
+
+function setTimer() {
+ 	if (time > 0 && timecontinuecheck == true) {
+		time -= 0.01
+	} else if (time < 0) {
+		time = 0;
+	}
+	time = Math.round(100 * time) / 100;
+	document.getElementById('timedisplay').innerHTML = "Time: " + time;
+	
+	
+	// game end checker
+	if (time <= 0 && lettersperminute >= 90) {
+		document.getElementById('WorL').style.display = "inline";
+		timecontinuecheck = false;
+		gameend = true;
+		document.getElementById('lpmdisplay').innerHTML = "Letters per minute: " + lettersperminute + "/90";
+	} else if (time <= 0 && lettersperminute < 90){
+		document.getElementById('WorL').innerHTML = "YOU LOSE LLLLL SOOO BAD GET BETTER";
+		document.getElementById('WorL').style.display = "inline";
+		gameend = true;
+		document.getElementById('lpmdisplay').innerHTML = "Letters per minute: " + lettersperminute + "/90";
+	}
+}
+
+
+
+generateRandomLetter();
+setInterval(checkTextValue, 50);
+time += 0.01;
+
+ 
+
+//start up
+function openingmessage() {
+	document.getElementById('openingmessage').style.display = 'none';
+	document.getElementById('likeeverything').style.display = 'inline';
+}
+</script>
+</body>
+</html>
