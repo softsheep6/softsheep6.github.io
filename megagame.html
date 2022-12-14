@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ARG MINIGAME 3</title>
+<link rel="shortcut icon" type="image/png" href="deepargfavicon.png"/>
+  
+  <style>
+    div {
+	position: relative;
+	background-color: rgba(255, 255, 255, 0);
+}
+button {
+	border: none;
+	width: 50px;
+	height: 50px;
+	background-color: rgba(255, 255, 255, 0);
+	font-size: 20px;
+
+}
+.correct {
+	background-color: rgb(255, 255, 255);
+}
+
+/* 144, 238, 144 */
+.key1 {
+	left: 0px;
+	bottom: 0px;
+}
+.key2 {
+	left: 50px;
+	bottom: 50px;
+}
+.key3 {
+	left: 100px;
+	bottom: 100px;
+}
+.key4 {
+	left: 150px;
+	bottom: 150px;
+}
+.key5 {
+	bottom: 170px;
+	left: 0px;
+}
+.key6 {
+	bottom: 220px;
+	left: 50px;
+}
+.key7 {
+	bottom: 270px;
+	left: 100px;
+}
+.key8 {
+	bottom: 320px;
+	left: 150px;
+}
+.winorlose {
+	position: relative;
+	bottom: 300px;
+}
+
+
+.likeeverything {
+	display: none;
+}
+.openingmessage {
+	display: inline;
+	background-color: lightgray;
+	border: black 3px double;
+	position: absolute;
+	top: 45%;
+	left: 35%;
+}
+  </style>
+</head>
+
+<body>
+
+<h1 class="openingmessage" id="openingmessage" onClick="openingmessage()">
+welcome to minigame #1 click me to continue
+</h1>
+
+
+<div class="likeeverything" id="likeeverything">
+<div id="key1" class="key1" onclick="guessCorrect()"><button onclick="guessIncorrect()" id="kb1">🔑</button></div>
+<div id="key2" class="key2" onclick="guessCorrect()"><button onclick="guessIncorrect()" id="kb2">🔑</button></div>
+<div id="key3" class="key3" onclick="guessCorrect()"><button onclick="guessIncorrect()" id="kb3">🔑</button></div>
+<div id="key4" class="key4" onclick="guessCorrect()"><button onclick="guessIncorrect()" id="kb4">🔑</button></div>
+<br>
+<div id="key5" class="key5" onclick="guessCorrect()"><button onclick="guessIncorrect()" id="kb5">🔑</button></div>
+<div id="key6" class="key6" onclick="guessCorrect()"><button onclick="guessIncorrect()" id="kb6">🔑</button></div>
+<div id="key7" class="key7" onclick="guessCorrect()"><button onclick="guessIncorrect()" id="kb7">🔑</button></div>
+<div id="key8" class="key8" onclick="guessCorrect()"><button class="correct" id="kb8" onclick="guessIncorrect()">🔑</button></div>
+
+<br><br>
+<h1 id="winorlose" class="winorlose">
+
+</h1>
+
+</div>
+  
+  
+  
+<script>
+
+var key1 = document.getElementById('key1');
+var key2 = document.getElementById('key2');
+var key3 = document.getElementById('key3');
+var key4 = document.getElementById('key4');
+var key5 = document.getElementById('key5');
+var key6 = document.getElementById('key6');
+var key7 = document.getElementById('key7');
+var key8 = document.getElementById('key8');
+var kb1 = document.getElementById('kb1');
+var kb2 = document.getElementById('kb2');
+var kb3 = document.getElementById('kb3');
+var kb4 = document.getElementById('kb4');
+var kb5 = document.getElementById('kb5');
+var kb6 = document.getElementById('kb6');
+var kb7 = document.getElementById('kb7');
+var kb8 = document.getElementById('kb8');
+var key1left = 0;
+var key2left = 0;
+var key3left = 0;
+var key4left = 0;
+var key5left = 0;
+var key6left = 0;
+var key7left = 0;
+var key8left = 0;
+var key1bottom = 0;
+var key2bottom = 0;
+var key3bottom = 0;
+var key4bottom = 0;
+var key5bottom = 0;
+var key6bottom = 0;
+var key7bottom = 0;
+var key8bottom = 0;
+var guess = false;
+var combination = Math.random() * 4
+
+// true shows the key numbers, false hides them
+var keynumbers = false;
+
+function openingmessage() {
+	document.getElementById('openingmessage').style.display = 'none';
+	document.getElementById('likeeverything').style.display = 'inline';
+	beginLimbo()
+}
+
+
+// flash the correct key for a little 
+async function correctGlow(rcolor, gcolor, bcolor) {
+  //super efficient wow (not really)
+  rcolor = 255;
+  gcolor = 255;
+  bcolor = 255;
+
+  await delay(500);
+
+  //green
+  for (let i = 0; i < 50; i++) {
+    await delay(5);
+    rcolor -= 4;
+    bcolor -= 4;
+    kb8.style.backgroundColor = "rgb(" + rcolor + ", " + gcolor + ", " + bcolor + ")";
+  }
+  //hold green for a sec
+  await delay(500);
+  //white again
+  for (let i = 0; i < 50; i++) {
+    await delay(5);
+    rcolor += 4;
+    bcolor += 4;
+    kb8.style.backgroundColor = "rgb(" + rcolor + ", " + gcolor + ", " + bcolor + ")";
+  }
+  kb8.style.backgroundColor = "rgba(255, 255, 255, 0)";
+}
+
+// horizontal swap
+async function swap1and2() {
+  for (let i = 0; i < 50; i++) {
+    key1left++
+    key2left++
+    key1.style.left = 0 + key1left + "px";
+    key2.style.left = 50 - key2left + "px";
+    await delay(1);
+  }
+
+}
+async function swap3and4() {
+  for (let i = 0; i < 50; i++) {
+    key3left++
+    key4left++
+    key3.style.left = 100 + key3left + "px";
+    key4.style.left = 150 - key4left + "px";
+    await delay(1);
+  }
+
+}
+async function swap5and6() {
+  for (let i = 0; i < 50; i++) {
+    key5left++
+    key6left++
+    key5.style.left = 0 + key5left + "px";
+    key6.style.left = 50 - key6left + "px";
+    await delay(1);
+  }
+
+}
+async function swap7and8() {
+  for (let i = 0; i < 50; i++) {
+    key7left++
+    key8left++
+    key7.style.left = 100 + key8left + "px";
+    key8.style.left = 150 - key7left + "px";
+    await delay(1);
+  }
+}
+
+function horizontalSwap() {
+  swap1and2()
+  swap3and4()
+  swap5and6()
+  swap7and8()
+}
+
+
+//vertical swap
+async function swap1and5() {
+  for (let i = 0; i < 50; i++) {
+    key1bottom++
+    key5bottom++
+    key1.style.bottom = 0 - key1bottom + "px";
+    key5.style.bottom = 170 + key5bottom + "px";
+    await delay(1);
+  }
+}
+async function swap2and6() {
+  for (let i = 0; i < 50; i++) {
+    key2bottom++
+    key6bottom++
+    key2.style.bottom = 50 - key2bottom + "px";
+    key6.style.bottom = 220 + key6bottom + "px";
+    await delay(1);
+  }
+}
+async function swap3and7() {
+  for (let i = 0; i < 50; i++) {
+    key3bottom++
+    key7bottom++
+    key3.style.bottom = 100 - key3bottom + "px";
+    key7.style.bottom = 270 + key7bottom + "px";
+    await delay(1);
+  }
+}
+async function swap4and8() {
+  for (let i = 0; i < 50; i++) {
+    key4bottom++
+    key8bottom++
+    key4.style.bottom = 150 - key4bottom + "px";
+    key8.style.bottom = 320 + key8bottom + "px";
+    await delay(1);
+  }
+}
+
+function verticalSwap() {
+  swap1and5()
+  swap2and6()
+  swap3and7()
+  swap4and8()
+}
+
+
+//clockwise shift
+async function cwShift() {
+  for (let i = 0; i < 50; i++) {
+    key1left++
+    key1.style.left = 0 + key1left + "px";
+    key2left++
+    key2.style.left = 50 + key2left + "px";
+    key3left++
+    key3.style.left = 100 + key3left + "px";
+    key4bottom++
+    key4.style.bottom = 150 - key4bottom + "px";
+    key5bottom++
+    key5.style.bottom = 170 + key5bottom + "px";
+    key6left++
+    key6.style.left = 50 - key6left + "px";
+    key7left++
+    key7.style.left = 100 - key7left + "px";
+    key8left++
+    key8.style.left = 150 - key8left + "px";
+    await delay(1);
+  }
+}
+
+//counterclockwise shift
+async function ccwShift() {
+  for (let i = 0; i < 50; i++) {
+    key1bottom++
+    key1.style.bottom = 0 - key1bottom + "px";
+    key2left++
+    key2.style.left = 50 - key2left + "px";
+    key3left++
+    key3.style.left = 100 - key3left + "px";
+    key4left++
+    key4.style.left = 150 - key4left + "px";
+    key5left++
+    key5.style.left = 0 + key5left + "px";
+    key6left++
+    key6.style.left = 50 + key6left + "px";
+    key7left++
+    key7.style.left = 100 + key7left + "px";
+    key8bottom++
+    key8.style.bottom = 320 + key8bottom + "px";
+    await delay(1);
+  }
+}
+
+// two square clockwise shift
+async function twoSquareCwShift() {
+  for (let i = 0; i < 50; i++) {
+    key1left++
+    key1.style.left = 0 + key1left + "px";
+    key2bottom++
+	key2.style.bottom = 50 - key2bottom + "px";
+    key6left++
+	key6.style.left = 50 - key6left + "px";
+	key5bottom++
+    key5.style.bottom = 170 + key5bottom + "px";
+    
+	key3left++
+    key3.style.left = 100 + key3left + "px";
+    key4bottom++
+	key4.style.bottom = 150 - key4bottom + "px";
+    key8left++
+	key8.style.left = 150 - key8left + "px";
+	key7bottom++
+    key7.style.bottom = 270 + key7bottom + "px";
+		await delay(1);
+  }
+}
+
+// two square counterclockwise shift
+async function twoSquareCcwShift() {
+  for (let i = 0; i < 50; i++) {
+    key1bottom++
+    key1.style.bottom = 0 - key1bottom + "px";
+    key2left++
+	key2.style.left = 50 - key2left + "px";
+    key6bottom++
+	key6.style.bottom = 220 + key6bottom + "px";
+	key5left++
+    key5.style.left = 0 + key5left + "px";
+    
+	key3bottom++
+    key3.style.bottom = 100 - key3bottom + "px";
+    key4left++
+	key4.style.left = 150 - key4left + "px";
+    key8bottom++
+	key8.style.bottom = 320 + key8bottom + "px";
+	key7left++
+    key7.style.left = 100 + key7left + "px";
+		await delay(1);
+  }
+}
+
+// two squares go diagonal
+async function twoSquareDiagonal() {
+	for (let i = 0; i < 50; i++) {
+		key1left++
+		key1bottom++
+		key1.style.left = 0 + key1left + "px";
+		key1.style.bottom = 0 - key1bottom + "px";
+		key6left++
+		key6bottom++
+		key6.style.left = 50 - key6left + "px";
+		key6.style.bottom = 220 + key6bottom + "px";
+		key2left++
+		key2bottom++
+		key2.style.left = 50 - key2left + "px";
+		key2.style.bottom = 50 - key2bottom + "px";
+		key5left++
+		key5bottom++
+		key5.style.left = 0 + key5left + "px";
+		key5.style.bottom = 170 + key5bottom + "px";
+		
+		key3left++
+		key3bottom++
+		key3.style.left = 100 + key3left + "px";
+		key3.style.bottom = 100 - key3bottom + "px";
+		key8left++
+		key8bottom++
+		key8.style.left = 150 - key8left + "px";
+		key8.style.bottom = 320 + key8bottom + "px";
+		key4left++
+		key4bottom++
+		key4.style.left = 150 - key4left + "px";
+		key4.style.bottom = 150 - key4bottom + "px";
+		key7left++
+		key7bottom++
+		key7.style.left = 100 + key7left + "px";
+		key7.style.bottom = 270 + key7bottom + "px";
+		await delay(1);
+	}
+}
+
+// corners go diagonal and middle square also go diagonal
+async function biggerDiagonal() {
+	for (let i = 0; i < 50; i++) {
+		key1left += 3;
+		key1bottom++;
+		key1.style.left = 0 + key1left + "px";
+		key1.style.bottom = 0 - key1bottom + "px";
+		key8left += 3;
+		key8bottom++;
+		key8.style.left = 150 - key8left + "px";
+		key8.style.bottom = 320 + key8bottom + "px";
+		key5left += 3;
+		key5bottom++;
+		key5.style.left = 0 + key5left + "px";
+		key5.style.bottom = 170 + key5bottom + "px";
+		key4left += 3;
+		key4bottom++;
+		key4.style.left = 150 - key4left + "px";
+		key4.style.bottom = 150 - key4bottom + "px";
+		
+		key2left++
+		key2bottom++
+		key2.style.left = 50 + key2left + "px";
+		key2.style.bottom = 50 - key2bottom + "px";
+		key7left++
+		key7bottom++
+		key7.style.left = 100 - key7left + "px";
+		key7.style.bottom = 270 + key7bottom + "px";
+		key6left++
+		key6bottom++
+		key6.style.left = 50 + key6left + "px";
+		key6.style.bottom = 220 + key6bottom + "px";
+		key3left++
+		key3bottom++
+		key3.style.left = 100 - key3left + "px";
+		key3.style.bottom = 100 - key3bottom + "px";
+		await delay(8);
+	}
+}
+
+// left 2 keys go to the right edge and the rest of the keys move back left
+async function edgeLeftSwap() {
+	for (let i = 0; i < 50; i++) {
+		key1left += 3;
+		key1.style.left = 0 + key1left + "px";
+		key5left += 3;
+		key5.style.left = 0 + key5left + "px";
+		
+		key2left++;
+		key2.style.left = 50 - key2left + "px";
+		key6left++;
+		key6.style.left = 50 - key6left + "px";
+		key3left++;
+		key3.style.left = 100 - key3left + "px";
+		key7left++;
+		key7.style.left = 100 - key7left + "px";
+		key4left++;
+		key4.style.left = 150 - key4left + "px";
+		key8left++;
+		key8.style.left = 150 - key8left + "px";
+		await delay(1);
+	}
+}
+
+// right 2 keys go to the left edge and the rest of the keys move back right
+async function edgeRightSwap() {
+	for (let i = 0; i < 50; i++) {
+		key4left += 3;
+		key4.style.left = 150 - key4left + "px";
+		key8left += 3;
+		key8.style.left = 150 - key8left + "px";
+		
+		key1left++;
+		key1.style.left = 0 + key1left + "px";
+		key5left++;
+		key5.style.left = 0 + key5left + "px";
+		key2left++;
+		key2.style.left = 50 + key2left + "px";
+		key6left++;
+		key6.style.left = 50 + key6left + "px";
+		key3left++;
+		key3.style.left = 100 + key3left + "px";
+		key7left++;
+		key7.style.left = 100 + key7left + "px";
+		await delay(1);
+	}
+}
+
+if (keynumbers == true) {
+  document.getElementById('kb1').innerHTML = "🔑1";
+  document.getElementById('kb2').innerHTML = "🔑2";
+  document.getElementById('kb3').innerHTML = "🔑3";
+  document.getElementById('kb4').innerHTML = "🔑4";
+  document.getElementById('kb5').innerHTML = "🔑5";
+  document.getElementById('kb6').innerHTML = "🔑6";
+  document.getElementById('kb7').innerHTML = "🔑7";
+  document.getElementById('correct').innerHTML = "🔑8";
+}
+
+
+//LIST OF MOVEMENTS: horizontalSwap(); verticalSwap(); cwShift(); ccwShift(); twoSquareCwShift(); twoSquareCcwShift(); twoSquareDiagonal(); biggerDiagonal(); edgeLeftSwap(); edgeRightSwap();   (10 total)
+
+//done
+async function shutup() {
+  // combination 1/4
+  correctGlow();
+  await delay(2000);
+  resetKeyPos();
+  horizontalSwap();
+  await delay(333);
+  resetKeyPos();
+  twoSquareDiagonal();
+  await delay(333);
+  resetKeyPos();
+  horizontalSwap();
+  await delay(333);
+  resetKeyPos();
+  edgeLeftSwap();
+  await delay(333);
+  resetKeyPos();
+  verticalSwap();
+  await delay(333);
+  resetKeyPos();
+  cwShift();
+  await delay(333);
+  resetKeyPos();
+  biggerDiagonal();
+  await delay(666);
+  resetKeyPos();
+  edgeRightSwap();
+  await delay(333);
+  resetKeyPos();
+  twoSquareCcwShift();
+  await delay(333);
+  resetKeyPos();
+  horizontalSwap();
+  await delay(333);
+  resetKeyPos();
+  cwShift();
+  await delay(333);
+  resetKeyPos();
+  twoSquareDiagonal();
+  await delay(333);
+  resetKeyPos();
+  edgeLeftSwap();
+  await delay(333);
+  resetKeyPos();
+  verticalSwap(); //key 5 at this point
+  await delay(333);
+  resetKeyPos();
+  ccwShift();
+  await delay(333);
+  resetKeyPos();
+  twoSquareCcwShift();
+  await delay(333);
+  resetKeyPos();
+  cwShift();
+  await delay(333);
+  resetKeyPos();
+  twoSquareDiagonal();
+  await delay(333);
+  resetKeyPos();
+  horizontalSwap();
+  await delay(333);
+  resetKeyPos();
+  verticalSwap();
+  await delay(333);
+  resetKeyPos();
+  twoSquareCwShift();
+  await delay(333);
+  resetKeyPos();
+  horizontalSwap();
+  await delay(333);
+  resetKeyPos();
+  horizontalSwap();
+  await delay(333);
+  resetKeyPos();
+  biggerDiagonal(); //key 5 atp
+  await delay(666);
+  resetKeyPos();
+  ccwShift();
+  await delay(333);
+  resetKeyPos();
+  twoSquareDiagonal();
+  await delay(333);
+  resetKeyPos();
+  //26 movements total (like limbo)
+  guess = true;
+}
+
+//done
+async function shutup2() {
+  // combination 2/4
+  correctGlow();
+  await delay(2000);
+  resetKeyPos();
+  cwShift();
+  await delay(333);
+  resetKeyPos();
+  cwShift();
+  await delay(333);
+  resetKeyPos();
+  verticalSwap();
+  await delay(333);
+  resetKeyPos();
+  horizontalSwap();
+  await delay(333);
+  resetKeyPos();
+  twoSquareCcwShift();
+  await delay(333);
+  resetKeyPos();
+  biggerDiagonal();
+  await delay(666);
+  resetKeyPos();
+  twoSquareDiagonal();
+  await delay(333);
+  resetKeyPos();
+  verticalSwap();
+  await delay(333);
+  resetKeyPos();
+  cwShift();
+  await delay(333);
+  resetKeyPos();
+  horizontalSwap();
+  await delay(333);
+  resetKeyPos();
+  edgeLeftSwap();
+  await delay(333);
+  resetKeyPos();
+  twoSquareCwShift();
+  await delay(333);
+  resetKeyPos();
+  ccwShift();
+  await delay(333);
+  resetKeyPos();
+  verticalSwap();
+  await delay(333);
+  resetKeyPos();
+  horizontalSwap();
+  await delay(333);
+  resetKeyPos();
+  edgeRightSwap();
+  await delay(333);
+  resetKeyPos();
+  cwShift();
+  await delay(333);
+  resetKeyPos();
+  verticalSwap();
+  await delay(333);
+  resetKeyPos();
+  twoSquareDiagonal();
+  await delay(333);
+  resetKeyPos();
+  twoSquareCcwShift();
+  await delay(333);
+  resetKeyPos();
+  biggerDiagonal();
+  await delay(666);
+  resetKeyPos();
+  twoSquareCwShift();
+  await delay(333);
+  resetKeyPos();
+  edgeRightSwap(); //key 5 rn
+  await delay(333);
+  resetKeyPos();
+  horizontalSwap();
+  await delay(333);
+  resetKeyPos();
+  twoSquareDiagonal();
+  await delay(333);
+  resetKeyPos();
+  edgeLeftSwap();
+  await delay(333);
+  resetKeyPos(); //key 4
+  //26 movements total (like limbo)
+  guess = true;
+}
+
+//done
+async function shutup3() {
+  // combination 3/4
+  correctGlow();
+  await delay(2000);
+  resetKeyPos();
+  verticalSwap();
+  await delay(333);
+  resetKeyPos();
+  horizontalSwap();
+  await delay(333);
+  resetKeyPos();
+  ccwShift();
+  await delay(333);
+  resetKeyPos();
+  twoSquareCwShift();
+  await delay(333);
+  resetKeyPos();
+  twoSquareCwShift();
+  await delay(333);
+  resetKeyPos();
+  twoSquareDiagonal();
+  await delay(333);
+  resetKeyPos();
+  horizontalSwap();
+  await delay(333);
+  resetKeyPos();
+  edgeLeftSwap();
+  await delay(333);
+  resetKeyPos();
+  verticalSwap(); //key8 rn
+  await delay(333);
+  resetKeyPos();
+  cwShift();
+  await delay(333);
+  resetKeyPos();
+  twoSquareCwShift();
+  await delay(333);
+  resetKeyPos();
+  biggerDiagonal();
+  await delay(666);
+  resetKeyPos();
+  horizontalSwap();
+  await delay(333);
+  resetKeyPos();
+  twoSquareDiagonal();
+  await delay(333);
+  resetKeyPos();
+  edgeRightSwap();
+  await delay(333);
+  resetKeyPos();
+  cwShift(); //key4 rn
+  await delay(333);
+  resetKeyPos();
+  twoSquareCwShift();
+  await delay(333);
+  resetKeyPos();
+  edgeRightSwap();
+  await delay(333);
+  resetKeyPos();
+  verticalSwap();
+  await delay(333);
+  resetKeyPos();
+  twoSquareDiagonal();
+  await delay(333);
+  resetKeyPos();
+  horizontalSwap();
+  await delay(333);
+  resetKeyPos();
+  twoSquareCwShift();
+  await delay(333);
+  resetKeyPos();
+  cwShift();
+  await delay(333);
+  resetKeyPos();
+  biggerDiagonal();
+  await delay(666);
+  resetKeyPos();
+  verticalSwap();
+  await delay(333);
+  resetKeyPos();
+  twoSquareDiagonal(); //key8
+  await delay(333);
+  resetKeyPos();
+  //26 movements total (like limbo)
+  guess = true;
+}
+
+//not done
+async function shutup4() {
+  // combination 4/4
+  correctGlow();
+  await delay(2000);
+  resetKeyPos();
+  twoSquareCwShift();
+  await delay(333);
+  resetKeyPos();
+  twoSquareCwShift();
+  await delay(333);
+  resetKeyPos();
+  ccwShift();
+  await delay(333);
+  resetKeyPos();
+  twoSquareDiagonal();
+  await delay(333);
+  resetKeyPos();
+  horizontalSwap();
+  await delay(333);
+  resetKeyPos();
+  twoSquareCcwShift();
+  await delay(333);
+  resetKeyPos();
+  biggerDiagonal();
+  await delay(666);
+  resetKeyPos();
+  horizontalSwap();
+  await delay(333);
+  resetKeyPos();
+  verticalSwap();
+  await delay(333);
+  resetKeyPos();
+  edgeRightSwap();
+  await delay(333);
+  resetKeyPos();
+  verticalSwap();
+  await delay(333);
+  resetKeyPos();
+  ccwShift();
+  await delay(333);
+  resetKeyPos();
+  twoSquareDiagonal();
+  await delay(333);
+  resetKeyPos();
+  twoSquareCwShift();
+  await delay(333);
+  resetKeyPos();
+  cwShift();
+  await delay(333);
+  resetKeyPos();
+  horizontalSwap();
+  await delay(333);
+  resetKeyPos();
+  cwShift();
+  await delay(333);
+  resetKeyPos();
+  biggerDiagonal();
+  await delay(666);
+  resetKeyPos();
+  verticalSwap();
+  await delay(333);
+  resetKeyPos();
+  edgeLeftSwap(); //key8 rn
+  await delay(333);
+  resetKeyPos();
+  twoSquareCcwShift();
+  await delay(333);
+  resetKeyPos();
+  twoSquareCcwShift();
+  await delay(333);
+  resetKeyPos();
+  verticalSwap();
+  await delay(333);
+  resetKeyPos();
+  cwShift();
+  await delay(333);
+  resetKeyPos();
+  biggerDiagonal();
+  await delay(666);
+  resetKeyPos();
+  //26 movements total (like limbo)
+  guess = true;
+}
+
+//picks the combination, there are 4 combinations. shutup results in key 1, shutup2 results in key 4, shutup3 results in key 8, shutup4 results in key 3. (83 reference because im using this for arg too lmao) (also dont ask why theyre all called shutup i think i was mad at jsfiddle or something and i just named it that and it was funny so i kept it)
+function beginLimbo() {
+	//random combination 1-4
+	combination = Math.ceil(combination);
+	//combination = 4;
+	console.log(combination)
+	
+	if (combination == 1) {
+		shutup()
+		kb1.onclick = "guessCorrect()"
+	} else if (combination == 2) {
+		shutup2()
+		kb4.onclick = "guessCorrect()"
+	} else if (combination == 3) {
+		shutup3()
+		kb8.onclick = "guessCorrect()"
+	} else if (combination == 4) {
+		shutup4()
+		kb3.onclick = "guessCorrect()"
+	}
+}
+
+
+function guessIncorrect() {
+  if (guess == true) {
+    document.getElementById('winorlose').innerHTML = "YOU LOSE";
+    guess = false;
+  }
+}
+
+function guessCorrect() {
+  if (guess == true) {
+    document.getElementById('winorlose').innerHTML = "YOU WIN";
+    guess = false;
+  }
+}
+
+
+//THE MINIGAME IS SAVED THANK YOU BRAIN
+function resetKeyPos() {
+  key1.style.left = "0px";
+  key2.style.left = "50px";
+  key3.style.left = "100px";
+  key4.style.left = "150px";
+  key5.style.left = "0px";
+  key6.style.left = "50px";
+  key7.style.left = "100px";
+  key8.style.left = "150px";
+  key1.style.bottom = "0px";
+  key2.style.bottom = "50px";
+  key3.style.bottom = "100px";
+  key4.style.bottom = "150px";
+  key5.style.bottom = "170px";
+  key6.style.bottom = "220px";
+  key7.style.bottom = "270px";
+  key8.style.bottom = "320px";
+  key1left = 0;
+  key2left = 0;
+  key3left = 0;
+  key4left = 0;
+  key5left = 0;
+  key6left = 0;
+  key7left = 0;
+  key8left = 0;
+  key1bottom = 0;
+  key2bottom = 0;
+  key3bottom = 0;
+  key4bottom = 0;
+  key5bottom = 0;
+  key6bottom = 0;
+  key7bottom = 0;
+  key8bottom = 0;
+}
+
+
+
+function delay(milliseconds) {
+  return new Promise(resolve => {
+    setTimeout(resolve, milliseconds);
+  });
+}
+
+/*
+correctGlow();
+  await delay(2000);
+  resetKeyPos();
+  horizontalSwap();
+  await delay(333);
+  resetKeyPos();
+  verticalSwap();
+  await delay(333);
+  resetKeyPos();
+  cwShift();
+  await delay(333);
+  resetKeyPos();
+  ccwShift();
+  await delay(333);
+  resetKeyPos();
+  twoSquareCwShift();
+  await delay(333);
+  resetKeyPos();
+  twoSquareCcwShift()
+  await delay(333);
+  resetKeyPos();
+  twoSquareDiagonal();
+  await delay(333);
+  resetKeyPos();
+  biggerDiagonal();
+  await delay(666);
+  resetKeyPos();
+  edgeLeftSwap();
+  await delay(333);
+  resetKeyPos();
+  edgeRightSwap();
+  await delay(333);
+  resetKeyPos();
+  */
+</script>
+  
+</body>
+</html>
