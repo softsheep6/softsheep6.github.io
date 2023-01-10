@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="https://fonts.cdnfonts.com/css/aileron" rel="stylesheet">
+<title>quiz wow</title>
+  <style>
+    body {
+	font-family: 'Aileron', sans-serif;
+}
+
+.question {
+	font-size: 24px;
+	text-align: center;
+}
+
+.options {
+	border: 2px solid darkblue;
+	width: 200px;
+	height: 60px;
+	text-align: center;
+	position: relative;
+	transition-duration: 0.25s;
+	font-size: 18px;
+}
+.options:hover {
+	background-color: lightblue;
+	cursor: pointer;
+}
+
+.option1 {
+	top: 25px;
+}
+.option2 {
+	top: -39px;
+	left: 208px;
+}
+.option3 {
+	top: -35px;
+}
+.option4 {
+	top: -99px;
+	left: 208px;
+}
+
+.lives {
+	float: bottom;
+	position: relative;
+	top: -60px;
+	color: green;
+}
+  </style>
+</head>
+<body>
+<div id="everything">
+
+<div class="question" id="question">What color is softsheep13's profile picture?</div>
+<div style="margin: auto;width:30%;">
+<div class="options option1" onclick="wrongAnswer()" id="option1div"><p id="option1">Blue</p></div>
+<div class="options option2" onclick="rightAnswer()" id="option2div"><p id="option2">Red</p></div>
+<div class="options option3" onclick="wrongAnswer()" id="option3div"><p id="option3">Triangle</p></div>
+<div class="options option4" onclick="wrongAnswer()" id="option4div"><p id="option4">Eight</p></div>
+</div>
+
+</div>
+
+<div class="lives" id="lives">Lives: 3</div>
+
+<h1 style="display:none;" id="gameover">
+Game overrrr you lose
+</h1>
+  <script>
+    var questionnum = 0;
+var lives = 3;
+var livesdisplay = document.getElementById("lives");
+var option1 = document.getElementById("option1");
+var option2 = document.getElementById("option2");
+var option3 = document.getElementById("option3");
+var option4 = document.getElementById("option4");
+var option1div = document.getElementById("option1div");
+var option2div = document.getElementById("option2div");
+var option3div = document.getElementById("option3div");
+var option4div = document.getElementById("option4div");
+var question = document.getElementById("question");
+
+function updateLives() {
+	livesdisplay.innerHTML = "Lives: " + lives;
+}
+function wrongAnswer() {
+	lives -= 1;
+	if (lives == 0) {
+		document.getElementById('everything').style.display = "none";
+		document.getElementById('gameover').style.display = "inline";
+		livesdisplay.style.color = "darkred";
+		livesdisplay.style.top = "225px";
+	} else if (lives == 2) {
+		livesdisplay.style.color = "orange";
+	}
+	else if (lives == 1) {
+		livesdisplay.style.color = "red";
+	}
+}
+function rightAnswer() {
+	questionnum += 1;
+	updateQuestion()
+	console.log(questionnum)
+}
+function updateQuestion() {
+	if (questionnum == 1) {
+		question.innerHTML = "Question 2";
+		option1.innerHTML = "Option 1";
+		option2.innerHTML = "Option 2";
+		option3.innerHTML = "Option 3";
+		option4.innerHTML = "Option 4";
+		/* option1div.onclick = function() {wrongAnswer()};
+		option2div.onclick = function() {rightAnswer()};
+		option3div.onclick = function() {wrongAnswer()};
+		option4div.onclick = function() {wrongAnswer()}; */
+	}
+	if (questionnum == 2) {
+		question.innerHTML = "Question 3";
+		option1.innerHTML = "Option 1";
+		option2.innerHTML = "Option 2";
+		option3.innerHTML = "Option 3";
+		option4.innerHTML = "Option 4";
+		/* option1div.onclick = function() {wrongAnswer()};
+		option2div.onclick = function() {rightAnswer()};
+		option3div.onclick = function() {wrongAnswer()};
+		option4div.onclick = function() {wrongAnswer()}; */
+	}
+	if (questionnum == 3) {
+		question.innerHTML = "Question 4";
+		option1.innerHTML = "Option 1";
+		option2.innerHTML = "Option 2";
+		option3.innerHTML = "Option 3";
+		option4.innerHTML = "Option 4";
+		/* option1div.onclick = function() {wrongAnswer()};
+		option2div.onclick = function() {rightAnswer()};
+		option3div.onclick = function() {wrongAnswer()};
+		option4div.onclick = function() {wrongAnswer()}; */
+	}
+}
+setInterval(updateLives, 50);
+  </script>
+</body>
+</html>
