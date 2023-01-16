@@ -1,10 +1,43 @@
 body {
-  font-family:  Arial, Helvetica, sans-serif;
-  background-color: lightslategray;
+    background-color: #33333d;
+  	color: white;
+  	font-family: Arial, Helvetica, sans-serif;
 }
-hr {
-  width:70%
+
+h1 {
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    font-size: 96px;
+    line-height: 0px;
+    text-align: center;
 }
-.contacttext {
-  text-decoration:none;
+
+a {
+	color: lightblue;
 }
+
+.welcometo {
+    font-size: 20px;
+}
+
+
+
+
+
+
+/* stuff below was too hard to make look nice across devices so yea nevermind
+.gamebutton {
+    border-radius: 10px;
+    width: 380px;
+    height: 250px;
+  position: relative;
+  background-color: white;
+}
+
+.gamebutton1 {
+    left: 5%;
+}
+
+.gamebutton2 {
+    left: 75%;
+    top: -251px;
+}*/
