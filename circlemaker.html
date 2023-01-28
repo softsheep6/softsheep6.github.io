@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>circle maker</title>
+<link rel="shortcut icon" type="image/png" href="circlemaker.png"/>
+  <style>
+  canvas {
+	background-color: white;
+	}
+#gobutton, #question2, #question3 {
+	display: none;
+}
+  </style>
+</head>
+<body style="margin: 0px;">
+
+
+<div id="disappearsoon">
+<h1>
+welcome to circle maker where you make a circle
+</h1>
+
+<div id="question1">
+<p>
+What color should the circle be?
+</p>
+
+<button style="background-color:red;" onclick="color = 'red';document.getElementById('question1').style.display = 'none';document.getElementById('question2').style.display = 'inline';">
+Red
+</button>
+<button style="background-color:orange;" onclick="color = 'orange';document.getElementById('question1').style.display = 'none';document.getElementById('question2').style.display = 'inline';">
+Orange
+</button>
+<button style="background-color:yellow;" onclick="color = 'yellow';document.getElementById('question1').style.display = 'none';document.getElementById('question2').style.display = 'inline';">
+Yellow
+</button>
+<button style="background-color:green;" onclick="color = 'green';document.getElementById('question1').style.display = 'none';document.getElementById('question2').style.display = 'inline';">
+Green
+</button>
+<button style="background-color:blue;" onclick="color = 'blue';document.getElementById('question1').style.display = 'none';document.getElementById('question2').style.display = 'inline';">
+Blue
+</button>
+<button style="background-color:purple;" onclick="color = 'purple';document.getElementById('question1').style.display = 'none';document.getElementById('question2').style.display = 'inline';">
+Purple
+</button>
+<button style="background-color:black;color:white;" onclick="color = 'black';document.getElementById('question1').style.display = 'none';document.getElementById('question2').style.display = 'inline';">
+Black
+</button>
+<button style="background-color:white;" onclick="rainbow=true;document.getElementById('question1').style.display = 'none';document.getElementById('question2').style.display = 'inline';">
+Random Colors
+</button>
+</div>
+
+
+<div id="question2">
+<p>
+Should the circle grow or shrink?
+</p>
+
+<button style="width:100px;height:30px;background-color:#4444FF;" onclick="radGrowNegative = false;document.getElementById('question2').style.display = 'none';document.getElementById('question3').style.display = 'inline';">
+Grow
+</button>
+<button style="width:100px;height:30px;background-color:#FF5555;" onclick="radGrowNegative = true;document.getElementById('question2').style.display = 'none';radius=300;document.getElementById('question3').style.display = 'inline';">
+Shrink
+</button>
+</div>
+
+
+<div id="question3">
+<p>
+How fast should the circle grow/shrink?
+</p>
+
+<button style="background-color:lightgreen;" onclick="document.getElementById('question3').style.display = 'none';document.getElementById('gobutton').style.display = 'inline';radiusGrow = 0.5;">
+5px/second
+</button>
+<button style="background-color:green;" onclick="document.getElementById('question3').style.display = 'none';document.getElementById('gobutton').style.display = 'inline';radiusGrow = 1;">
+10px/second
+</button>
+<button style="background-color:darkgreen;" onclick="document.getElementById('question3').style.display = 'none';document.getElementById('gobutton').style.display = 'inline';radiusGrow = 1.5;">
+20px/second
+</button>
+</div>
+
+
+
+<br><br>
+<button style="width:120px;height:40px;background-color:lightgreen;font-size:20px;" onclick="document.getElementById('disappearsoon').style.display = 'none';negativeCheck();setInterval(go, 100);" id="gobutton">
+Go
+</button>
+
+</div>
+<canvas id="canvas"></canvas>
+
+<script>
+// make canvas and stuff
+var canvas = document.getElementById('canvas');
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+var c = canvas.getContext('2d');
+
+var radius = 30;
+var color = "red";
+var radiusGrow = 1.5;
+var radGrowNegative = false;
+var rainbow = false;
+
+//thing that makes circles
+function circle(x, y) {
+	//see if color is rainbow
+	if (rainbow) {
+		var colorNum = Math.round(Math.random() * 12);
+		if (colorNum == 0) {
+			color = "black";
+		} else if (colorNum == 1) {
+			color = "#FFCCCB";
+		} else if (colorNum == 2) {
+		color = "red";
+		} else if (colorNum == 3) {
+			color = "#FFD580";
+		} else if (colorNum == 4) {
+			color = "orange";
+		} else if (colorNum == 5) {
+			color = "#ffffe0";
+		} else if (colorNum == 6) {
+			color = "yellow";
+		} else if (colorNum == 7) {
+			color = "lightgreen";
+		} else if (colorNum == 8) {
+			color = "green";
+		} else if (colorNum == 9) {
+			color = "lightblue";
+		} else if (colorNum == 10) {
+			color = "blue";
+		} else if (colorNum == 11) {
+			color = "purple";
+		} else if (colorNum == 12) {
+			color = "pink";
+		}
+	}
+	c.strokeStyle = 'white';
+	c.arc(x, y, radius, 0, 2 * Math.PI);
+	c.stroke();
+	c.strokeStyle = color;
+	c.arc(x, y, radius, 0, 2 * Math.PI);
+	c.stroke();
+	radius += radiusGrow;
+	if (radius >= 300) {
+		radius = 300;
+	} else if (radius <= 1) {
+		radius = 1;
+	}
+}
+
+function go() {
+	circle(canvas.width/2, canvas.height/2);
+}
+
+//see if circle is gonna shrink
+function negativeCheck() {
+	if (radGrowNegative) {
+		radiusGrow = -radiusGrow
+	}
+}
+/*
+var radius = 15;
+function circle(x, y) {
+	//mess with radius/colors for different effects
+	c.strokeStyle = 'white';
+	c.arc(x, y, radius, 0, 2 * Math.PI);
+	c.stroke();
+	c.strokeStyle = 'black';
+	c.arc(x, y, radius, 0, 2 * Math.PI);
+	c.stroke();
+	radius+= 1.5;
+	if (radius >= 75) {
+		radius = 75;
+	}
+}*/
+</script>
+</body>
+</html>
