@@ -60,7 +60,7 @@ Should the circle grow or shrink?
 <button style="width:100px;height:30px;background-color:#4444FF;" onclick="radGrowNegative = false;document.getElementById('question2').style.display = 'none';document.getElementById('question3').style.display = 'inline';">
 Grow
 </button>
-<button style="width:100px;height:30px;background-color:#FF5555;" onclick="radGrowNegative = true;document.getElementById('question2').style.display = 'none';radius=300;document.getElementById('question3').style.display = 'inline';">
+<button style="width:100px;height:30px;background-color:#FF5555;" onclick="radGrowNegative = true;document.getElementById('question2').style.display = 'none';radius=600;document.getElementById('question3').style.display = 'inline';">
 Shrink
 </button>
 </div>
@@ -117,7 +117,7 @@ function circle(x, y) {
 		} else if (colorNum == 1) {
 			color = "#FFCCCB";
 		} else if (colorNum == 2) {
-		color = "red";
+			color = "red";
 		} else if (colorNum == 3) {
 			color = "#FFD580";
 		} else if (colorNum == 4) {
@@ -147,8 +147,8 @@ function circle(x, y) {
 	c.arc(x, y, radius, 0, 2 * Math.PI);
 	c.stroke();
 	radius += radiusGrow;
-	if (radius >= 300) {
-		radius = 300;
+	if (radius >= 600) {
+		radius = 600;
 	} else if (radius <= 1) {
 		radius = 1;
 	}
