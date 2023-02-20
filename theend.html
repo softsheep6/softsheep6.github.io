@@ -5,21 +5,31 @@
 </head>
 <body style="margin: 0px;">
 <audio id="my_audio" src="https://softsheep6.me/theend.mp3"></audio>
-<div onclick="document.getElementById('my_audio').play();">
-fesrgdrg
+
+<div  id="notstuff" onclick="document.getElementById('my_audio').play();document.getElementById('stuff').style.display = 'inline';document.getElementById('notstuff').style.display = 'none';yea();">
+CLICK TO BEGIN
+</div>
+
+<div id="stuff">
+<canvas id="thecanvas"></canvas>
 </div>
 <canvas id="thecanvas"></canvas>
 
 <script>
+function yea() {
+
 var canvas = document.getElementById('thecanvas');
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+canvas.width = window.innerWidth-5;
+canvas.height = window.innerHeight-5;
 
 var c = canvas.getContext('2d');
 
 c.strokeStyle = "#FF0000";
-c.strokeRect(10, 10, window.innerWidth-20, window.innerHeight-20)
+c.strokeRect(10, 10, window.innerWidth-20, window.innerHeight-20);
+c.strokeRect(20, 20, window.innerWidth-40, window.innerHeight-40);
+c.strokeRect(30, 30, window.innerWidth-60, window.innerHeight-60);
+}
   </script>
 </body>
 </html>
