@@ -5,18 +5,12 @@
 </head>
 <body style="margin: 0px;">
 <audio id="my_audio" src="https://softsheep6.me/theend.mp3"></audio>
-
+<div onclick="document.getElementById('my_audio').play();">
+fesrgdrg
+</div>
 <canvas id="thecanvas"></canvas>
 
 <script>
-  // the song
-var playsong = true;
-
-if (playsong) {
-	window.onload = function() {
- 	   document.getElementById("my_audio").play();
-	}
-}
 var canvas = document.getElementById('thecanvas');
 
 canvas.width = window.innerWidth;
