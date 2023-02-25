@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+	background-color: yellow;
+	overflow: hidden;
+}
+.confetti {
+	translate: 0px 0px;
+	
+}
+  </style>
+</head>
+<body>
+
+<canvas id="thecanvas"></canvas>
+<img src="http://softsheep6.me/confettiforhtp.png" class="confetti" id="confetti1">
+<img src="http://softsheep6.me/confettiforhtp.png" class="confetti" id="confetti2">
+<img src="http://softsheep6.me/confettiforhtp.png" class="confetti" id="confetti3">
+<img src="http://softsheep6.me/confettiforhtp.png" class="confetti" id="confetti4">
+  
+  
+  <script>
+    var canvas = document.getElementById('thecanvas');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+var c = canvas.getContext('2d');
+var confetti1 = document.getElementById("confetti1");
+var confetti2 = document.getElementById("confetti2");
+var confetti3 = document.getElementById("confetti3");
+var confetti4 = document.getElementById("confetti4");
+var currentDeg = 0;
+
+var fillGrad = c.createLinearGradient(0, 0, canvas.width, 0);
+var fillGrad2 = c.createLinearGradient(0, 0, canvas.width, 0);
+fillGrad.addColorStop("0.0", "#990000");
+fillGrad.addColorStop("1.0", "white");
+fillGrad2.addColorStop("0.0", "white");
+fillGrad2.addColorStop("1.0", "#990000");
+c.font = "80px Verdana";
+
+c.fillStyle = fillGrad;
+c.fillText('HAPPY BIRTHDAY HTP!', 30, 90)
+c.fillStyle = fillGrad2;
+c.fillText('HAPPY BIRTHDAY HTP!', 32, 92)
+
+confetti1.style.translate = '0px -' + window.innerWidth/2 + 'px';
+confetti2.style.translate = '0px -' + window.innerWidth/2 + 'px';
+confetti3.style.translate = '0px -' + window.innerWidth/2 + 'px';
+confetti4.style.translate = '0px -' + window.innerWidth/2 + 'px';
+
+function rotate() {
+	
+    currentDeg += 0.1
+	confetti1.style.rotate = currentDeg + 'deg';
+	confetti2.style.rotate = -currentDeg + 'deg';
+	confetti3.style.rotate = currentDeg + 'deg';
+	confetti4.style.rotate = -currentDeg + 'deg';
+}
+setInterval(rotate, 5);
+  </script>
+</body>
+</html>
