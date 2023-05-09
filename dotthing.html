@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+<canvas style="border: 1px solid black;" id="cantvas"></canvas>
+
+<script>
+
+canvas = document.querySelector('canvas');
+
+// if width/xspeed == height/yspeed, line will be diagonal going from top left to bottom right
+canvas.width = 400;
+canvas.height = 400;
+
+var c = canvas.getContext('2d');
+
+var dotX = 1;
+var dotY = 1;
+var dotXSpeed = 5;
+var dotYSpeed = 4;
+
+
+function dot() {
+	// uncomment for debug stuff
+	//console.log(dotX, dotY, dotXSpeed, dotYSpeed)
+	
+	// comment out for line instead of dot
+	//c.clearRect(0, 0, 1000, 1000);
+	
+	if (dotX >= canvas.width || dotX <= 0)
+		dotXSpeed *= -1;
+	if (dotY >= canvas.height || dotY <= 0)
+		dotYSpeed *= -1;
+	
+	dotX += dotXSpeed;
+	dotY += dotYSpeed;
+	
+	c.beginPath();
+	// x, y, radius, leave as 0 for circle, leave as 2*math.pi for circle
+	c.arc(dotX, dotY, 1, 0, 2*Math.PI);
+	c.stroke();
+	
+}
+
+setInterval(dot, 5);
+
+</script>
+
+</body>
+</html>
