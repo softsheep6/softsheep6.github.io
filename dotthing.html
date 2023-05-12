@@ -4,10 +4,40 @@
 
 </head>
 <body>
-<canvas style="border: 1px solid black;" id="cantvas"></canvas>
+<canvas style="border: 1px solid black;display: none;" id="cantvas"></canvas>
+<div id="yeaform">
 
+
+<form>
+<label for="xspeed">Enter X speed of line...</label><br>
+<input type="number" id="xspeed" name="xspeed" max="50" min="1" required><br><br>
+<label for="yspeed">Enter Y speed of line...</label><br>
+<input type="number" id="yspeed" name="yspeed" max="50" min="1" required>
+</form><br>
+
+<button onclick="start()">
+Start
+</button>
+</div>
 <script>
+	var dotX = 1;
+var dotY = 1;
+var dotXSpeed = 5;
+var dotYSpeed = 4;
 
+var started = false;
+
+function test() {
+	if (started == false) {
+		dotXSpeed = Math.floor(document.getElementById('xspeed').value);
+		dotYSpeed = Math.floor(document.getElementById('yspeed').value);
+		
+	}
+}
+setInterval(test, 100)
+
+function start() {
+started = true;
 canvas = document.querySelector('canvas');
 
 // if width/xspeed == height/yspeed, line will be diagonal going from top left to bottom right
@@ -16,11 +46,8 @@ canvas.height = 400;
 
 var c = canvas.getContext('2d');
 
-var dotX = 1;
-var dotY = 1;
-var dotXSpeed = 5;
-var dotYSpeed = 4;
-
+canvas.style.display = "inline";
+document.getElementById('yeaform').style.display = "none";
 
 function dot() {
 	// uncomment for debug stuff
@@ -44,9 +71,9 @@ function dot() {
 	
 }
 
-setInterval(dot, 5);
+setInterval(dot, 25);
 
-</script>
-
+}
+	</script>
 </body>
 </html>
