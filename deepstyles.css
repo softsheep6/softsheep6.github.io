@@ -2,11 +2,14 @@ body {
     background-color: #aaaacc;
     font-family: 'Source Code Pro';
 }
-.softsheep13 {
+.softsheep14 {
     display: block;
     margin-left: auto;
     margin-right: auto;
     
+}
+.softsheep14::selection {
+    background: none;
 }
 .text {
     text-align: center;
