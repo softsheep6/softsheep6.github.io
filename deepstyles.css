@@ -15,7 +15,9 @@ body {
 .text::selection {
     background: none;
 }
-
+.clicktocontinue {
+    opacity: 0.5;
+}
 
 
 
